@@ -1,3 +1,11 @@
+1.0
+================
+  * added message in the popup when adding items in multi-select mode. Thanks
+    to Limi.
+  
+  * fixed a bug that occured when setting references on objects located
+    in the portal root. Thanks to AlecM.
+
 0.2.1 
 ================
   * fixed problem with portal_factory
@@ -8,11 +16,6 @@
   
   * added startup_directory patch from optilude (thanks)
   
-  * added message in the popup when adding items in multi-select mode. Thanks
-    to Limi.
-  
-  * fixed a bug that occured when setting references on objects located
-    in the portal root. Thanks to AlecM.
 
 0.2 - 2004-09-09
 ================
