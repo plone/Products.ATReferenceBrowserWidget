@@ -1,0 +1,39 @@
+0.2.1 
+================
+  * fixed problem with portal_factory
+  
+  * fixed problem with startup_directory
+  
+  * removed automatic install of the demo type.
+  
+  * added startup_directory patch from optilude (thanks)
+  
+  * added message in the popup when adding items in multi-select mode. Thanks
+    to Limi.
+  
+  * fixed a bug that occured when setting references on objects located
+    in the portal root. Thanks to AlecM.
+
+0.2 - 2004-09-09
+================
+
+  * added batched view
+  
+  * fixed a problem with multiValued
+  
+  * added view link that opens the object in a new browser
+    window so you can check if that's the object 
+    you are looking for
+    
+  * added 'back' link that does a javascript:history.back()
+    so you can return to the browser mode after you've
+    done a search.
+    
+  * removed possibility to link to the object itself.
+  
+  * made the popup window a bit wider and higher
+
+  * modified the 'close window' link. Now sits next to the 'back' link.
+  
+  * added startup_directory property for the widget to force another
+    startup folder in the portal for the popup window.
