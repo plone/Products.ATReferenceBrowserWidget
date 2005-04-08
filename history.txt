@@ -1,5 +1,8 @@
 1.0
 ================
+  * added property (search_catalog) to allow querying of alternate catalogs
+    (e.g. CMFMember's member_catalog). (alecm)
+
   * added message in the popup when adding items in multi-select mode. Thanks
     to Limi.
   

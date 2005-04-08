@@ -36,7 +36,7 @@
                       description python:widget.Description(at_obj);
                       allowed_types python:list(field.allowed_types);
                       search_index python:here.REQUEST.get('search_index', widget.default_search_index);
-                      show_indexes python:str(widget.show_indexes);
+                      show_indexes widget/show_indexes;
                       search_text python:here.REQUEST.get('searchValue', '');
                       dummy python:here.REQUEST.set(search_index, search_text);
                       available_indexes python:widget.available_indexes;
@@ -44,6 +44,7 @@
                       allow_browse python:widget.allow_browse;
                       base_query python:widget.getBaseQuery(here, field);
                       force_close_on_insert python:widget.force_close_on_insert;
+                      search_catalog widget/search_catalog|string:portal_catalog;
                       close_window python:test(multi==0,0, test(force_close_on_insert, 0, 1));
                       b_size python:20;
                       b_start python:0;
@@ -67,8 +68,8 @@
               style="padding-bottom:0em;"
               tal:condition="allow_search"
               tal:define="DateTime python:modules['DateTime'].DateTime;
-                          indexes python:here.portal_catalog.indexes();"
-              tal:attributes="action string: ${here/absolute_url}/${template/getId}">
+                          indexes python:getattr(here, search_catalog, here.portal_catalog).indexes();"
+              tal:attributes="action string:${here/absolute_url}/${template/getId}">
             <fieldset>
             <legend i18n:translate="referencebrowser_search_terms">Search</legend>
 
@@ -76,7 +77,7 @@
                 <tal:alter_request tal:define="dummy python: request.form.update(base_query)"/>
             </tal:base_query>
 
-            <div class="field" tal:condition="python:show_indexes=='1'">
+            <div class="field" tal:condition="show_indexes">
                 <label i18n:translate="referencebrowser_search_index_label">Search index</label><br/>
                 <select name="search_index" 
                         style=""
@@ -128,7 +129,7 @@
            <span i18n:translate="">Added reference to:</span>&nbsp;<span id="messageTitle"></span>
         </div>
         <!-- actual list of objects, either searchresults or folder contents -->
-        <tal:block tal:define="query_results python:search_text and [brain.getObject() for brain in here.queryCatalog()];">
+        <tal:block tal:define="query_results python:search_text and [brain.getObject() for brain in here.referencebrowser_queryCatalog(search_catalog=search_catalog)];">
             <div style="border-top:1px solid black;border-bottom:1px solid black;"
                      tal:attributes="style string:border-top:1px solid ${border_color};;
                                            border-bottom:1px solid ${border_color};;
