@@ -10,7 +10,13 @@
           tal:define="charset here/portal_properties/site_properties/default_charset;
                       dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)"
           tal:attributes="content string:text/html;;charset=${charset}" />
-    <style type="text/css" media="all"
+    <tal:cssreg tal:condition="exists:here/portal_css">    
+        <metal:css metal:use-macro="here/renderAllTheStylesheets/macros/cssrenderer">
+             <!-- Fetch stylesheets from the CSS Registry -->
+        </metal:css>
+    </tal:cssreg>
+    <style type="text/css" media="all" 
+           tal:condition="not: exists:here/portal_css"
            tal:define="current_skin python: request.get(here.portal_skins.getRequestVarname(),'');
            skin_query python:(current_skin and ('?' + ztu.make_query(skin=current_skin))) or ''"
            tal:content="string: @import url(${here/portal_url}/plone.css${skin_query});">
