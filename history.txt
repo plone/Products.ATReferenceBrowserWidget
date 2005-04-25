@@ -1,7 +1,8 @@
-after 1.0
+1.0.1
 ================
 
   * added i18n infrastructure (hannosch, naro)
+  * added support for CSSRegistry
 
 1.0
 ================
