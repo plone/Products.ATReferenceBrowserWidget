@@ -50,7 +50,6 @@
                       b_start python:0;
                       b_start request/b_start | b_start;
                       Batch python:modules['Products.CMFPlone'].Batch;">
-<p tal:content="at_url"/>
         <div style="text-align:right;margin-bottom:-1.4em;margin-top:1em;">
            <a href="javascript:history.back()" i18n:translate="referencebrowser_back">back</a>
            |
