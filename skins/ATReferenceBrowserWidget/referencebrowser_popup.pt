@@ -126,7 +126,7 @@
             </fieldset>
         </form>
         <div id="message" class="portalMessage" style="display:none;margin-top:0px;">
-           <span i18n:translate="">Added reference to:</span>&nbsp;<span id="messageTitle"></span>
+           <span i18n:translate="referencebrowser_text_added_reference">Added reference to:</span>&nbsp;<span id="messageTitle"></span>
         </div>
         <!-- actual list of objects, either searchresults or folder contents -->
         <tal:block tal:define="query_results python:search_text and [brain.getObject() for brain in here.referencebrowser_queryCatalog(search_catalog=search_catalog)];">
@@ -151,7 +151,7 @@
                     <img tal:condition="repeat/parent/start" 
                          tal:attributes="src string:${here/portal_url}/logoIcon.gif"/>
                     <tal:path tal:condition="not: repeat/parent/start">
-                        <a tal:attributes="href python:parent.absolute_url() + '/' + template.getId() + '?fieldName=' + fieldName + '&at_url=' + at_url">
+                        <a tal:attributes="href python:parent.absolute_url() + '/' + template.getId() + '?fieldName=' + fieldName + '&amp;at_url=' + at_url">
                             <span tal:content="string: ${parent/title_or_id}"
                                   tal:condition="python: parent.absolute_url()!=portal.absolute_url()"/>
                             <span tal:content="string:Home" tal:condition="python: parent.absolute_url()==portal.absolute_url()"/>
@@ -187,7 +187,7 @@
                                     <td width="50%">
                                         <img src="#" tal:attributes="src string:${here/portal_url}/${item/getIcon};alt item/Title" />
                                         <a tal:condition="python: item.isPrincipiaFolderish and allow_browse"
-                                           tal:attributes="href python:item.absolute_url() + '/' + template.getId() + '?fieldName='+ fieldName + '&at_url='+at_url">
+                                           tal:attributes="href python:item.absolute_url() + '/' + template.getId() + '?fieldName='+ fieldName + '&amp;at_url='+at_url">
                                             <strong tal:condition="referenceable"
                                                     tal:content="item/title_or_id">Title</strong>
                                             <span style="" 
