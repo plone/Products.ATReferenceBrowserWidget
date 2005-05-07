@@ -64,8 +64,8 @@ class ReferenceBrowserWidget(ReferenceWidget):
             allowed_types = getattr(field, 'allowed_types', None)
             allow_method = getattr(field, 'allowed_types_method', None)
             if allow_method:
-                meth = getattr(instance, allowed_types_method)
-                allowed_types = meth(self)
+                meth = getattr(instance, allow_method)
+                allowed_types = meth()
             if allowed_types:
                 results['portal_type']=allowed_types
 

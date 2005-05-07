@@ -62,7 +62,8 @@
 
         <div metal:fill-slot="widget_body"
              tal:define="multiVal python:test(field.multiValued, 1, 0);
-                         fieldName python:fieldName;
+                         fieldName fieldName;
+                         fieldRealName field/getName;
                          uids python:same_type(value, []) and value or [value];
                          types_param python:','.join(field.allowed_types)
                          ">
@@ -127,7 +128,7 @@
                         value="Browse..." 
                         onClick=""
                         i18n:attributes="value"
-                        tal:attributes="onClick string:javascript:referencebrowser_openBrowser('${startup_directory}','${fieldName}', '${at_url}')" />
+                        tal:attributes="onClick string:javascript:referencebrowser_openBrowser('${startup_directory}','${fieldName}', '${at_url}', '${fieldRealName}')" />
               <input type="button" 
                         class="context" 
                         value="Remove reference" 

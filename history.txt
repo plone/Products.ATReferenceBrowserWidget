@@ -1,6 +1,13 @@
 1.0.1
 ================
 
+  * fieldName may not be the same as field.getName() due to the way
+    BaseObject.widget() works.  This strangeness is used to make
+    Topics/Criteria work, but makes ATRBW unusable in criteria.  Now it works.
+    (alecm)
+  * Fixed allowed_types handling so that it respects allowed_types_method, and
+    fixed the method handling. (alecm)
+  * Fixed some base_query brokenness when allow_browse is enabled. (alecm)
   * added i18n infrastructure (hannosch, naro)
   * added support for CSSRegistry
 
@@ -14,6 +21,12 @@
   
   * fixed a bug that occured when setting references on objects located
     in the portal root. Thanks to AlecM.
+
+  * Added base_query property which takes a dictionary or method that returns
+    a dictionary containing a catalog query to use as a filter (most useful
+    with allow_browse disabled).  All portal_type restrictions use this
+    mechanism now which allows for proper use of the field property
+    allowed_types_method to make the types restrictions dynamic. (alecm)
 
 0.2.1 
 ================
