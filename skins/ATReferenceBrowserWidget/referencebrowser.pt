@@ -133,7 +133,6 @@
                         class="context" 
                         value="Remove reference" 
                         onClick=""
-                        style="margin-top:0.9em;font-size:100%"
                         i18n:attributes="value"
                         tal:condition="not: multiVal"
                         tal:attributes="onClick string:javascript:referencebrowser_removeReference('${fieldName}', ${multiVal})" />
@@ -141,7 +140,6 @@
                         class="context" 
                         value="Remove selected items" 
                         onClick=""
-                        style="margin-top:0.9em;font-size:100%"
                         i18n:attributes="value"
                         tal:condition="multiVal"
                         tal:attributes="onClick string:javascript:referencebrowser_removeReference('${fieldName}', ${multiVal})" />                        
