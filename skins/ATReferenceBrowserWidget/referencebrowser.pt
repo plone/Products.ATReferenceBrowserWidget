@@ -130,14 +130,14 @@
                         i18n:attributes="value"
                         tal:attributes="onClick string:javascript:referencebrowser_openBrowser('${startup_directory}','${fieldName}', '${at_url}', '${fieldRealName}')" />
               <input type="button" 
-                        class="context" 
+                        class="destructive" 
                         value="Remove reference" 
                         onClick=""
                         i18n:attributes="value"
                         tal:condition="not: multiVal"
                         tal:attributes="onClick string:javascript:referencebrowser_removeReference('${fieldName}', ${multiVal})" />
               <input type="button" 
-                        class="context" 
+                        class="destructive" 
                         value="Remove selected items" 
                         onClick=""
                         i18n:attributes="value"
