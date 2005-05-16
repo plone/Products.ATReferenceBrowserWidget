@@ -61,12 +61,12 @@ class ReferenceBrowserWidget(ReferenceWidget):
         # of original base_query the template tries to do this, but ignores
         # allowed_types_method, which should override allowed_types
         if not results.has_key('portal_type'):
-            allowed_types = getattr(field, 'allowed_types', None)
+            allowed_types = getattr(field, 'allowed_types', ())
             allow_method = getattr(field, 'allowed_types_method', None)
-            if allow_method:
+            if allow_method is not None:
                 meth = getattr(instance, allow_method)
                 allowed_types = meth()
-            if allowed_types:
+            else:
                 results['portal_type']=allowed_types
 
         return results
