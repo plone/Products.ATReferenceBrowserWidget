@@ -21,7 +21,7 @@
            skin_query python:(current_skin and ('?' + ztu.make_query(skin=current_skin))) or ''"
            tal:content="string: @import url(${here/portal_url}/plone.css${skin_query});">
     </style>
-    <script language="javascript">
+    <script language="javascript" type="text/javascript">
          function showMessage(message) {
             element = document.getElementById('message');
             element.style.display='block';
@@ -214,8 +214,9 @@
                                     </td>
                                     <td width="25%"
                                         style=""
-                                        tal:attributes="style python:test(referenceable, '', 'color:' + color)"
-                                        tal:content="python:item.getTypeInfo().Title()">Metatype
+                                        i18n:translate=""
+                                        tal:attributes="style python:test(referenceable, '', 'color:' + color)">
+                                        <div tal:replace="python:item.getTypeInfo().Title()" />
                                     </td>
                                     <td width="25%" 
                                         nowrap="nowrap" 
