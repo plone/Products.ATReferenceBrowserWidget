@@ -66,8 +66,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
             if allow_method is not None:
                 meth = getattr(instance, allow_method)
                 allowed_types = meth()
-            else:
-                results['portal_type']=allowed_types
+            results['portal_type']=allowed_types
 
         return results
 

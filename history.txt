@@ -1,6 +1,8 @@
 1.0.1
 ================
 
+  * fixed an allowed_types_method handling bug
+    (http://members.plone.org/collector/4131). (alecm)
   * fieldName may not be the same as field.getName() due to the way
     BaseObject.widget() works.  This strangeness is used to make
     Topics/Criteria work, but makes ATRBW unusable in criteria.  Now it works.
