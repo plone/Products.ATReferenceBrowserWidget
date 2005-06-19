@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="plone">
+      i18n:domain="atreferencebrowserwidget">
 
   <head><title></title></head>
 
@@ -87,13 +87,13 @@
                                                       id string:${fieldName}_label" readonly="readonly" />
                   </tal:block>
               </tal:value>
-              <input id=""  
-                        size="50" 
-                        type="text" 
-                        value="No reference set. Click the browse button to select." 
-                        readonly="readonly" 
-                        i18n:attributes="value" 
-                        tal:condition="not:  value" 
+              <input id=""
+                        size="50"
+                        type="text"
+                        value="No reference set. Click the browse button to select."
+                        readonly="readonly"
+                        i18n:attributes="value label_no_reference_set;"
+                        tal:condition="not:  value"
                         tal:attributes="id string:${fieldName}_label"/>
               <input type="hidden"
                         value=""
@@ -127,20 +127,20 @@
                         class="searchButton"
                         value="Browse..." 
                         onClick=""
-                        i18n:attributes="value"
+                        i18n:attributes="value label_browse;"
                         tal:attributes="onClick string:javascript:referencebrowser_openBrowser('${startup_directory}','${fieldName}', '${at_url}', '${fieldRealName}')" />
               <input type="button" 
                         class="destructive" 
                         value="Remove reference" 
                         onClick=""
-                        i18n:attributes="value"
+                        i18n:attributes="value label_remove_reference;"
                         tal:condition="not: multiVal"
                         tal:attributes="onClick string:javascript:referencebrowser_removeReference('${fieldName}', ${multiVal})" />
               <input type="button" 
                         class="destructive" 
                         value="Remove selected items" 
                         onClick=""
-                        i18n:attributes="value"
+                        i18n:attributes="value label_remove_selected_items;"
                         tal:condition="multiVal"
                         tal:attributes="onClick string:javascript:referencebrowser_removeReference('${fieldName}', ${multiVal})" />                        
           </div>          

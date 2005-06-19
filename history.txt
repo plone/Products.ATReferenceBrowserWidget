@@ -1,6 +1,7 @@
 1.0.1
 ================
 
+  * converted templates to own i18n domain (hannosch)
   * fixed an allowed_types_method handling bug
     (http://members.plone.org/collector/4131). (alecm)
   * fieldName may not be the same as field.getName() due to the way
