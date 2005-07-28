@@ -165,7 +165,7 @@
                                   tal:condition="python: parent.absolute_url()!=portal.absolute_url()"/>
                             <span tal:content="string:Home" tal:condition="python: parent.absolute_url()==portal.absolute_url()"/>
                             <span class="breadcrumbSeparator" 
-                                  tal:condition="not: repeat/parent/end" >&raquo;</span>
+                                  tal:condition="not: repeat/parent/end" >&rarr;</span>
                         </a>
                     </tal:path>
                 </tal:crums>
@@ -189,8 +189,7 @@
                                                   item_referenceable python:((allowed_types and (item.portal_type in allowed_types)) or not allowed_types);
                                                   has_uid python:hasattr(item.aq_explicit, 'UID');
                                                   referenceable python:has_uid and item_referenceable and item!=at_obj;
-                                                  color here/base_properties/discreetColor;
-                                                  color string:rgb(175,175,175);">
+                                                  color here/base_properties/discreetColor;">
                                 <tr tal:define="oddrow repeat/item/odd" 
                                     tal:attributes="class python:test(oddrow, 'even', 'odd')">
                                     <td width="50%">
