@@ -1,7 +1,8 @@
-1.0.2
+1.1
 ================
 
- * 
+ * Added handler for the popup
+ * Removed duplicate color definition in popup window
 
 1.0.1
 ================
