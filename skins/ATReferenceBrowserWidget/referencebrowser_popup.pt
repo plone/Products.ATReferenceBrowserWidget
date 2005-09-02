@@ -216,8 +216,9 @@
                                         style=""
                                         i18n:domain="plone"
                                         i18n:translate=""
-                                        tal:attributes="style python:test(referenceable, '', 'color:' + color)">
-                                        <div tal:replace="python:item.getTypeInfo().Title()" />
+                                        tal:attributes="style python:test(referenceable, '', 'color:' + color)"
+                                        tal:content="python:item.getTypeInfo().Title()">
+                                        Title
                                     </td>
                                     <td width="25%" 
                                         nowrap="nowrap" 
