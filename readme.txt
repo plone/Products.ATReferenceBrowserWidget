@@ -3,9 +3,7 @@ Intro
     ATReferenceBrowserWidget is an add-on to Archtetypes. It adds a new reference widget
 that allows you to search or browse the portal when creating references.
 This new widget inherits from the standard reference widget so you can use all it's 
-properties. For now, the addable feature has not been implemented/activated
-but that's not difficult. The only reason I haven't so far is that I have
-my doubts for it's usefulness. But of course, I can be wrong ;-)
+properties.
 
 When you use this widget, there are two buttons presented for each widget. One
 that opens a popup-window that let's you do the search/browsing and one that
