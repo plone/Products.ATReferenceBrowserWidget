@@ -1,3 +1,9 @@
+1.2
+================
+
+ * Made compatible with CMF 2.0 (CMF <= 1.4) isn't supported anymore
+   [hannosch]
+
 1.1
 ================
 
