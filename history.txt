@@ -1,12 +1,16 @@
+1.2
+================
+
+ * Added a slot for overriding the 'at_url' path to the object, so that the
+   widget can be used in scenarios where the path to the relevant object
+   isn't so obvious (in Fate for example).
+   [alecm]
 
  * skins/.../referencebrowser_popup.pt:
    Changed call to 'here.listFolderContents()' to 
    'here.folderlistingFolderContents()' in order to avoid requiring
    the 'List folder contents' permission on the folder to be browsed.
    [raphael]
-
-1.2
-================
 
  * Made compatible with CMF 2.0 (CMF <= 1.4) isn't supported anymore
    [hannosch]
