@@ -1,3 +1,10 @@
+
+ * skins/.../referencebrowser_popup.pt:
+   Changed call to 'here.listFolderContents()' to 
+   'here.folderlistingFolderContents()' in order to avoid requiring
+   the 'List folder contents' permission on the folder to be browsed.
+   [raphael]
+
 1.2
 ================
 
