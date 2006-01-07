@@ -68,10 +68,6 @@
                          types_param python:','.join(field.allowed_types)
                          ">
 
-          <metal:globals define-slot="reference_globals">
-            <tal:defines define="global at_url python:'/'.join(here.getPhysicalPath())" />
-          </metal:globals>
-
           <input type="hidden"
                              value=""
                              tal:condition="python:not field.required and multiVal"
@@ -125,7 +121,8 @@
                   </tal:block>
                 </select>
           </tal:multi>
-          <div tal:define="startup_directory python:here.referencebrowser_startupDirectory (widget.startup_directory);">
+          <div tal:define="startup_directory python:here.referencebrowser_startupDirectory (widget.startup_directory);
+                           global at_url at_url|python:'/'.join(here.getPhysicalPath())">
               <input type="button" 
                         class="searchButton"
                         value="Browse..." 
