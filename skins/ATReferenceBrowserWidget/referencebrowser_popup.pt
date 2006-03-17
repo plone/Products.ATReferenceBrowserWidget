@@ -153,22 +153,41 @@
                                            border-bottom:1px solid ${border_color};;
                                            margin-bottom:1em;;padding:0.2em 0 0.1em 0;;margin-top:1.5em;"
                      tal:condition= "python:search_text=='' and allow_browse"
-                     tal:define=    "parents request/PARENTS;
-                                     nil python: parents.reverse();
-                                     portal here/portal_url/getPortalObject;">
-                <tal:crums tal:repeat="parent parents">
-                    <img tal:condition="repeat/parent/start" 
-                         tal:attributes="src string:${here/portal_url}/logoIcon.gif"/>
-                    <tal:path tal:condition="not: repeat/parent/start">
-                        <a tal:attributes="href python:parent.absolute_url() + '/' + template.getId() + '?fieldName=' + fieldName +  '&amp;fieldRealName=' + fieldRealName + '&amp;at_url=' + at_url">
-                            <span tal:content="string: ${parent/title_or_id}"
-                                  tal:condition="python: parent.absolute_url()!=portal.absolute_url()"/>
-                            <span tal:content="string:Home" tal:condition="python: parent.absolute_url()==portal.absolute_url()"/>
-                            <span class="breadcrumbSeparator" 
-                                  tal:condition="not: repeat/parent/end" >&rarr;</span>
-                        </a>
-                    </tal:path>
+                     tal:define=    "portal here/portal_url/getPortalObject;
+                                     putils nocall:portal/plone_utils;
+                                     crumbs python:putils.createBreadCrumbs(here);
+                                     isRTL python:here.isRightToLeft(domain='plone');
+                                     parents request/PARENTS;
+                                     nil python: parents.reverse();">
+                                     
+                <img tal:attributes="src string:${here/portal_url}/logoIcon.gif"/>
+                <a i18n:translate="tabs_home"
+                   tal:attributes="href string:${portal/absolute_url}/${template/getId}?fieldName=${fieldName}&amp;fieldRealName=${fieldRealName}&amp;at_url=${at_url}">
+                    Home
+                </a>
+
+                <span tal:condition="crumbs" class="breadcrumbSeparator">
+                    <tal:ltr condition="not: isRTL">&rarr;</tal:ltr> 
+                    <tal:rtl condition="isRTL">&larr;</tal:rtl> 
+                </span>                
+
+                <tal:crums tal:repeat="crumb crumbs">            
+
+                    <a tal:attributes="href string:${crumb/absolute_url}/${template/getId}?fieldName=${fieldName}&amp;fieldRealName=${fieldRealName}&amp;at_url=${at_url}">
+                        <span tal:content="string: ${crumb/Title}">
+                            Breadcrumb Title
+                        </span>
+                    </a>
+
+                    <span tal:condition="not: repeat/crumb/end"
+                          class="breadcrumbSeparator">
+                        <tal:ltr condition="not: isRTL">&rarr;</tal:ltr> 
+                        <tal:rtl condition="isRTL">&larr;</tal:rtl> 
+                    </span>                                 
+
                 </tal:crums>
+             
+
             </div>
         
            <!-- object list -->
@@ -176,7 +195,7 @@
                <p i18n:translate="referencebrowser_no_items_found">No items found.</p>
            </tal:noresults>
            <tal:list tal:define="checkPermission python: here.portal_membership.checkPermission;
-                                 results python: test(search_text!='', query_results, test(allow_browse, [item for item in here.folderlistingFolderContents() if checkPermission('View',item)], []));
+                                 results python: test(search_text!='', query_results, test(allow_browse, [item for item in here.listFolderContents() if checkPermission('View',item)], []));
                                  batch python: Batch(results, b_size, int(b_start), orphan=1);">
                 <table class="group" 
                           width="100%" 
