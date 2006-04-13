@@ -30,7 +30,7 @@
          }
     </script>
 </head>
-    <body class"popup atrefbrowser" onload="focus();self.name='referencebrowser_popup'" style="margin: 4px;padding:0.5em;" 
+    <body class="popup atrefbrowser" onload="focus();self.name='referencebrowser_popup'" style="margin: 4px;padding:0.5em;" 
           tal:define="border_color here/base_properties/globalBorderColor;
                       at_url python:here.REQUEST.get('at_url');
                       fieldName python:here.REQUEST.get('fieldName');
