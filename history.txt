@@ -16,7 +16,11 @@
      
    [fRiSi <harald.friessengger@lovelysystems.com>]
      
-     
+  * added 'image_portal_types' and 'image_method' properties. This allows
+    you to specify a list of image portal types that are display inside
+    the popup widget as images using the 'image_method' (e.g. to show
+    images to be referenced as thumbnails)     
+    [ajung]
      
  
  

@@ -48,6 +48,8 @@
                       available_indexes python:widget.available_indexes;
                       allow_search python:widget.allow_search;
                       allow_browse python:widget.allow_browse;
+                      image_portal_types widget/image_portal_types;
+                      image_method widget/image_method|string:;
                       base_query python:widget.getBaseQuery(at_obj, field);
                       allowed_types base_query/portal_type;
                       dummy python: not allowed_types and base_query.pop('portal_type');
@@ -211,6 +213,11 @@
                                                   color here/base_properties/discreetColor;">
                                 <tr tal:define="oddrow repeat/item/odd" 
                                     tal:attributes="class python:test(oddrow, 'even', 'odd')">
+                                    <td tal:condition="image_portal_types">
+                                      <tal:if condition="python: item.getTypeInfo().Title() in image_portal_types" >
+                                        <img tal:attributes="src string:${item/absolute_url}/$image_method" />
+                                      </tal:if>
+                                    </td>
                                     <td width="50%">
                                         <img src="#" tal:attributes="src string:${here/portal_url}/${item/getIcon};alt item/Title" />
                                         <a tal:condition="python: item.isPrincipiaFolderish and allow_browse"
@@ -231,6 +238,7 @@
                                                   tal:attributes="style string:color:${color}" />
                                         </tal:foldercheck>
                                     </td>
+
                                     <td width="25%"
                                         style=""
                                         i18n:domain="plone"

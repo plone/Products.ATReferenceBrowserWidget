@@ -9,12 +9,19 @@
   <body>
 
     <metal:view_macro define-macro="view">
-      <tal:define define="refs python:here.getReferenceImpl(field.relationship)"
+      <tal:define define="refs               python:here.getReferenceImpl(field.relationship);
+                          image_portal_types field/widget/image_portal_types;
+                          image_method       field/widget/image_method|string:"
                   condition="refs">
 
         <tal:block tal:condition="not:field/multiValued"
                tal:define="ref python:refs[0];
                            obj ref/getTargetObject">
+            <tal:if condition="image_portal_types">
+              <img tal:condition="python: obj.portal_type in image_portal_types"
+                   tal:attributes="src string:${obj/absolute_url}/$image_method" 
+              />
+            </tal:if>
 
             <a href="#"
                tal:attributes="href obj/absolute_url;
@@ -36,6 +43,11 @@
         <ul tal:condition="field/multiValued">
           <li tal:repeat="ref refs">
              <tal:block tal:define="obj ref/getTargetObject">
+                <tal:if condition="image_portal_types">
+                  <img tal:condition="python: obj.portal_type in image_portal_types"
+                       tal:attributes="src string:${obj/absolute_url}/$image_method" 
+                  />
+                </tal:if>
                 <a href="#"
                    tal:attributes="href obj/absolute_url;
                                    class python:obj.portal_type.replace(' ', '_')"

@@ -21,7 +21,9 @@ class ReferenceBrowserWidget(ReferenceWidget):
         'startup_directory':'',
         'base_query':'',
         'force_close_on_insert':0,
-        'search_catalog':'portal_catalog'
+        'search_catalog':'portal_catalog',
+        'image_portal_types' : (),
+        'image_method' : None,
         })
 
     # default_search_index: when a user searches in the popup, this index is used by default
@@ -83,5 +85,7 @@ registerPropertyType('available_indexes', 'dictionary', ReferenceBrowserWidget)
 registerPropertyType('allow_search', 'boolean', ReferenceBrowserWidget)
 registerPropertyType('allow_browse', 'boolean', ReferenceBrowserWidget)
 registerPropertyType('startup_directory', 'string', ReferenceBrowserWidget)
-registerPropertyType('force_close_on_insert', 'boolean', ReferenceBrowserWidget)
 registerPropertyType('search_catalog', 'string', ReferenceBrowserWidget)
+registerPropertyType('image_portal_types', 'lines', ReferenceBrowserWidget)
+registerPropertyType('image_method', 'string', ReferenceBrowserWidget)
+registerPropertyType('force_close_on_insert', 'boolean', ReferenceBrowserWidget)
