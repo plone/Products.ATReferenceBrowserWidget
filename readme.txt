@@ -45,6 +45,8 @@ property then all the indexes will be shown (I think nobody should allow this to
     * image_method: specifies the name of a method that is added to the image
       URL to preview the image in a particular resolution (e.g. 'mini' for
       thumbnails)
+
+    * show_review_state: allows you to display the workflow state for objects (off by default)
       
     * force_close_on_insert: closes the popup when the user choses insert. This overrides the behavior in multiselect mode.
     * base_query: defines query terms that will apply to all searches, mainly useful to create specific restrictions when allow_browse=0.  Can be either a dictonary with query parameters, or the name of a method or callable available in cotext that will return such a dictionary.

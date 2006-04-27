@@ -48,6 +48,7 @@
                       available_indexes python:widget.available_indexes;
                       allow_search python:widget.allow_search;
                       allow_browse python:widget.allow_browse;
+                      show_review_state widget/show_review_state;
                       image_portal_types widget/image_portal_types;
                       image_method widget/image_method|string:;
                       base_query python:widget.getBaseQuery(at_obj, field);
@@ -56,6 +57,7 @@
                       force_close_on_insert python:widget.force_close_on_insert;
                       search_catalog widget/search_catalog|string:portal_catalog;
                       close_window python:test(multi==0,0, test(force_close_on_insert, 0, 1));
+                      getInfoFor python: context.portal_workflow.getInfoFor;
                       b_size python:20;
                       b_start python:0;
                       b_start request/b_start | b_start;
@@ -237,6 +239,13 @@
                                                   tal:content="item/title_or_id"
                                                   tal:attributes="style string:color:${color}" />
                                         </tal:foldercheck>
+
+                                        <div condition="show_review_state">
+                                            <span tal:define="state python: getInfoFor(item, 'review_state')"
+                                                  tal:attributes="class string:state-$state" 
+                                                  i18n:translate="" i18n:domain="plone" tal:content="state" 
+                                            />
+                                        </div>
                                     </td>
 
                                     <td width="25%"

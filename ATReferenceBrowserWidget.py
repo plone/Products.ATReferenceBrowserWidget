@@ -22,6 +22,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
         'base_query':'',
         'force_close_on_insert':0,
         'search_catalog':'portal_catalog',
+        'show_review_state':0,
         'image_portal_types' : (),
         'image_method' : None,
         })
@@ -39,6 +40,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
     #  is used
     # force_close_on_insert: closes the popup when the user choses insert. This overrides the behaviour
     #   in multiselect.
+    # show_review_state: show the review state of objects
     # search_catalog: the id of an alternate search catalog to use for the query
     #   (i.e. member_catalog for CMFMember)
     
@@ -47,6 +49,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
     security.declarePublic('getBaseQuery')
     def getBaseQuery(self, instance, field):
         """Return base query to use for content search"""
+
         query = self.base_query
         if query:
             if type(query) is StringType and shasattr(instance, query):

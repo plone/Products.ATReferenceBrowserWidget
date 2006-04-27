@@ -21,6 +21,8 @@
     the popup widget as images using the 'image_method' (e.g. to show
     images to be referenced as thumbnails)     
     [ajung]
+
+  * added 'show_review_state' property [ajung]
      
  
  
