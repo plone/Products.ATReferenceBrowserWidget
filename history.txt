@@ -24,7 +24,9 @@
 
   * added 'show_review_state' property [ajung]
      
- 
+  * added 'allow_ordering' property to able to reorder multiValued 
+    ReferenceFields
+  
  
 1.2
 ================

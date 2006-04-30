@@ -12,7 +12,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
     _properties.update({
         'macro' : "referencebrowser",
         'size' : '',
-        'helper_js': ('referencebrowser.js',),
+        'helper_js': ('referencebrowser.js', 'select_lists.js'),
         'default_search_index':'SearchableText',
         'show_indexes':0,
         'available_indexes':{},
@@ -22,6 +22,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
         'base_query':'',
         'force_close_on_insert':0,
         'search_catalog':'portal_catalog',
+        'allow_sorting':0,
         'show_review_state':0,
         'image_portal_types' : (),
         'image_method' : None,
@@ -36,6 +37,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
     #  is what the end-users sees to make the indexes more sensible for him.
     # allow_search: shows the search section in the popup
     # allow_browse: shows the browse section in the popup
+    # allow_sorting: optional reordering of references (requires multiValued=1)
     # startup_directory: directory where the popup opens. Optional. When omitted, the current folder
     #  is used
     # force_close_on_insert: closes the popup when the user choses insert. This overrides the behaviour
