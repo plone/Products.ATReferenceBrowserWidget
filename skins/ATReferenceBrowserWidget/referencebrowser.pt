@@ -116,6 +116,7 @@
           </tal:single>
           <tal:multi tal:condition="multiVal" 
                      tal:define="targets python:[(here.reference_catalog.lookupObject(u),u) for u in uids if u]">
+              <div style="float: left">
                 <select
                   multiple="multiple"
                   tabindex=""
@@ -132,14 +133,36 @@
                         </option>
                   </tal:block>
                 </select>
-                <div tal:condition="field/widget/allow_sorting" class="reference-widget-sorting">
-                  <input type="button" i18n:attributes="value" value="Move top" tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_to_top(el, pos);;" />
-                  <input type="button" i18n:attributes="value" value="Move up" tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_up(el, pos);;" />
-                  <input type="button" i18n:attributes="value" value="Move down" tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_down(el, pos);;" />
-                  <input type="button" i18n:attributes="value" value="Move bottom" tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_to_bottom(el, pos);;" />
-                </div>
+              </div>
+              <div  style="float: left; margin-left: 2em;" tal:condition="field/widget/allow_sorting" class="reference-widget-sorting">
+                  <input style="width: 100pt" type="button" 
+                         i18n:attributes="value label_move_top" 
+                         value="Move top" 
+                         tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_to_top(el, pos);;" 
+                  />
+                  <br/>
+                  <input style="width: 100pt" type="button" 
+                        i18n:attributes="value label_move_up" 
+                        value="Move up" 
+                        tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_up(el, pos);;" 
+                  />
+                  <br/>
+                  <input style="width: 100pt" type="button" 
+                        i18n:attributes="value label_move_down" 
+                        value="Move down" 
+                        tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_down(el, pos);;" 
+                  />
+                  <br/>
+                  <input style="width: 100pt" 
+                         type="button" 
+                         i18n:attributes="value label_move_bottom" 
+                         value="Move bottom" 
+                         tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_to_bottom(el, pos);;" 
+                  />
+              </div>
           </tal:multi>
-          <div tal:define="startup_directory python:here.referencebrowser_startupDirectory (widget.startup_directory);
+          <div style="clear: both" 
+               tal:define="startup_directory python:here.referencebrowser_startupDirectory (widget.startup_directory);
                            global at_url at_url|python:'/'.join(here.getPhysicalPath())">
               <input type="button" 
                         class="searchButton"
