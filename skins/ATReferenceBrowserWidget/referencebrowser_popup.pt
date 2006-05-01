@@ -241,7 +241,7 @@
                                         </tal:foldercheck>
 
                                         <div condition="show_review_state">
-                                            <span tal:define="state python: getInfoFor(item, 'review_state')"
+                                            <span tal:define="state python: getInfoFor(item, 'review_state', None)"
                                                   tal:attributes="class string:state-$state" 
                                                   i18n:translate="" i18n:domain="plone" tal:content="state" 
                                             />
