@@ -66,18 +66,50 @@ def filterPortalFactory (url):
     except:
         return context.absolute_url ()
 
+# checks if path starts with / - if, then
+# path is relative to portal root
+def checkPath(path):
+    if path.startswith('/'):
+        portal_url = getToolByName (context, 'portal_url')
+        return portal_url () + path
+    else:
+        return path
+
 #
 # Main execution
 #
 
-# Default case - if no directory is given, use the current folder
-if not directory:
+# Default case - if no directory is given, search for a property
+# refwidget_startupdirectories in portal_properties/site_properties
+# that is a lines field having the following
+# form:
+#    path1:path2
+# path1 is the path where all widgets being under it set startup_directory
+# to path2 if no startup_directory is set.
+if directory.strip() == '':
+
+    props = getToolByName(context, 'portal_properties').site_properties
+    if hasattr(props, 'refwidget_startupdirectories'):
+        startups = props.refwidget_startupdirectories
+        ownpath = '/'.join(context.getPhysicalPath())
+
+        # remove portal path - / is always portal_root
+        purl = '/'.join(getToolByName(context, 'portal_url').getPortalObject().getPhysicalPath())
+        ownpath = ownpath.replace(purl, '')
+        
+        for pathdef in startups:
+            psplit = pathdef.split(':')
+            if ownpath[0:len(psplit[0])] == psplit[0]:
+                dopath = psplit[1].strip()
+                if checkPath(dopath) == dopath:
+                    return filterPortalFactory(dopath)
+                else: return checkPath(dopath)
+    
     return filterPortalFactory (None)
 
 # If we have an absolute URL, return it relative to the portal root
-if directory.startswith ('/'):
-    portal_url = getToolByName (context, 'portal_url')
-    return portal_url () + directory
-
+if checkPath(directory) != directory:
+    return checkPath(directory)
+    
 # Else, if we have a relative URL, get it relative to the context.
 return filterPortalFactory (directory)

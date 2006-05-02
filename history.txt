@@ -23,6 +23,8 @@
     [ajung]
 
   * added 'show_review_state' property [ajung]
+
+  * extended functionality of startup_directory property [spamsch]
      
   * added 'allow_ordering' property to able to reorder multiValued 
     ReferenceFields

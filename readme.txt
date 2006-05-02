@@ -37,7 +37,14 @@ property then all the indexes will be shown (I think nobody should allow this to
     * allow_browse: shows the browse section in the popup
     
     * startup_directory: directory where the popup opens. Optional. When omitted, the current folder
-      is used
+      is used or in the case where a property refwidget_startupdirectories under site_properties is found
+      it is searched for a startup_directory.
+
+      Property is a lines field having the following
+      format:
+        path1:path2
+      path1 is the path where all widgets being under it set startup_directory
+      to path2 if no startup_directory is set.
 
     * image_portal_types: specify a list of image portal_types. Instances of
       these portal types are being previewed within the popup widget
