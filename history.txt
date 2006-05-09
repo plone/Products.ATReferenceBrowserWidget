@@ -1,6 +1,10 @@
 1.3
 ================
 
+ * Allow empty queries if there are some other constrains provided and
+   allow_browse is false. This closes http://dev.plone.org/plone/ticket/5181.
+   [hannosch]
+
  * skins/.../referencebrowser_popup.pt:
    - Changed call to ``here.folderlistingFolderContents()`` back to 
      ``here.listFolderContents()`` because this method is not available on

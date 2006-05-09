@@ -142,13 +142,13 @@
            <span i18n:translate="referencebrowser_text_added_reference">Added reference to:</span>&nbsp;<span id="messageTitle"></span>
         </div>
         <!-- actual list of objects, either searchresults or folder contents -->
-        <tal:block tal:define="query_results python:search_text and [brain.getObject() for brain in here.referencebrowser_queryCatalog(search_catalog=search_catalog)];">
+        <tal:block tal:define="query_results python:(search_text or not allow_browse) and [brain.getObject() for brain in here.referencebrowser_queryCatalog(search_catalog=search_catalog)];">
             <div style="border-top:1px solid black;border-bottom:1px solid black;"
                      tal:attributes="style string:border-top:1px solid ${border_color};;
                                            border-bottom:1px solid ${border_color};;
                                            margin-bottom:1em;;padding:0.2em 0 0.1em 0;;
                                            margin-top:1.5em;;"
-                     tal:condition="python:(search_text!='' and query_results!=[])">
+                     tal:condition="python:((search_text!='' or not allow_browse) and query_results!=[])">
                 <span i18n:translate="referencebrowser_heading_search_results">Search results</span>
             </div>
             <!-- breadcrums -->
@@ -195,11 +195,11 @@
             </div>
         
            <!-- object list -->
-           <tal:noresults tal:condition="python:search_text!='' and query_results==[]">
+           <tal:noresults tal:condition="python:(search_text!='' or not allow_browse) and query_results==[]">
                <p i18n:translate="referencebrowser_no_items_found">No items found.</p>
            </tal:noresults>
            <tal:list tal:define="checkPermission python: here.portal_membership.checkPermission;
-                                 results python: test(search_text!='', query_results, test(allow_browse, [item for item in here.listFolderContents() if checkPermission('View',item)], []));
+                                 results python: test(search_text!='' or not allow_browse, query_results, test(allow_browse, [item for item in here.listFolderContents() if checkPermission('View',item)], [])); 
                                  batch python: Batch(results, b_size, int(b_start), orphan=1);">
                 <table class="group" 
                           width="100%" 
