@@ -30,7 +30,7 @@
 
   * extended functionality of startup_directory property [spamsch]
      
-  * added 'allow_ordering' property to able to reorder multiValued 
+  * added 'allow_ordering' property to order to allow reordering of multiValued 
     ReferenceFields
   
  
