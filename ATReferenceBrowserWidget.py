@@ -24,6 +24,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
         'search_catalog':'portal_catalog',
         'allow_sorting':0,
         'show_review_state':0,
+        'show_path':0,
         'image_portal_types' : (),
         'image_method' : None,
         })

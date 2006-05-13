@@ -54,8 +54,11 @@ property then all the indexes will be shown (I think nobody should allow this to
       thumbnails)
 
     * show_review_state: allows you to display the workflow state for objects (off by default)
+
+    * show_path: display the relative path (relative to the portal object) of referenced objects 
       
     * force_close_on_insert: closes the popup when the user choses insert. This overrides the behavior in multiselect mode.
+
     * base_query: defines query terms that will apply to all searches, mainly useful to create specific restrictions when allow_browse=0.  Can be either a dictonary with query parameters, or the name of a method or callable available in cotext that will return such a dictionary.
     
 This add-on comes with an example content type that uses this widget. You can enable the installation

@@ -32,6 +32,8 @@
      
   * added 'allow_ordering' property to order to allow reordering of multiValued 
     ReferenceFields
+
+  * added 'show_path' property 
   
  
 1.2
