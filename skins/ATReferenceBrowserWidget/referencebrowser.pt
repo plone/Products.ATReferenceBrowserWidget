@@ -41,15 +41,17 @@
               reference object link
             </a>
 
-            <span tal:condition="show_path"
-                  tal:content="python: obj_path.replace(portal_path + '/', '') "/>
+            <tal:if condition="show_path">
+              (<span i18n:translate="directory">Directory:</span>
+              <span tal:replace="python: obj_path.replace(portal_path + '/', '') "/>)
+            </tal:if>
 
         </tal:block>
 
         <ul tal:condition="field/multiValued">
           <li tal:repeat="ref refs">
              <tal:block tal:define="obj ref/getTargetObject;
-                                    obj_path python: '/'.join(obj.getPhysicalPath())">
+                                    obj_path python: '/'.join(obj.getPhysicalPath());
                                     ">
                 <tal:if condition="image_portal_types">
                   <img tal:condition="python: obj.portal_type in image_portal_types"
@@ -71,8 +73,11 @@
                   reference object link
                 </a>
 
-                <span tal:condition="show_path"
-                      tal:content="python: obj_path.replace(portal_path + '/', '') "/>
+                <tal:if condition="show_path">
+                  (<span i18n:translate="directory">Directory:</span>
+                  <span tal:replace="python: obj_path.replace(portal_path + '/', '') "/>)
+                </tal:if>
+
              </tal:block>
           </li>
         </ul>
@@ -85,6 +90,8 @@
 
         <div metal:fill-slot="widget_body"
              tal:define="multiVal python:test(field.multiValued, 1, 0);
+                         show_path          field/widget/show_path|nothing;
+                         portal_path        python: '/'.join(context.portal_url.getPortalObject().getPhysicalPath());
                          fieldName fieldName;
                          fieldRealName field/getName;
                          uids python:same_type(value, []) and value or [value];
@@ -137,9 +144,12 @@
                                         tabindex tabindex/next;">
                     <tal:block tal:repeat="set targets">
                         <option value=""
-                                     selected="selected"
+                                    selected="selected"
+                                    tal:define="title    python: set[0].title_or_id();
+                                                obj_path python: '/'.join(set[0].getPhysicalPath());
+                                                title    python: show_path and '%s (%s)' % (title, obj_path.replace(portal_path, '')) or  title"
                                     tal:attributes="value python:set[1];"
-                                    tal:content="python:set[0].title_or_id()">
+                                    tal:content="title">
                             option
                         </option>
                   </tal:block>

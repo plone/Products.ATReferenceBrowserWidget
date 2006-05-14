@@ -31,9 +31,9 @@
   * extended functionality of startup_directory property [spamsch]
      
   * added 'allow_ordering' property to order to allow reordering of multiValued 
-    ReferenceFields
+    ReferenceFields [ajung]
 
-  * added 'show_path' property 
+  * added 'show_path' property  [ajung]
   
  
 1.2
