@@ -1,5 +1,5 @@
-1.3
-================
+1.3 - Released May 15, 2006
+===========================
 
  * Removed empty and unused i18n folder.
    [hannosch]
