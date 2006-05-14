@@ -1,6 +1,9 @@
 1.3
 ================
 
+ * Removed empty and unused i18n folder.
+   [hannosch]
+
  * Allow empty queries if there are some other constrains provided and
    allow_browse is false. This closes http://dev.plone.org/plone/ticket/5181.
    [hannosch]
@@ -18,7 +21,7 @@
      
      (see http://plone.org/documentation/how-to/select-skin-by-url)
      
-   [fRiSi <harald.friessengger@lovelysystems.com>]
+   [fRiSi]
      
   * added 'image_portal_types' and 'image_method' properties. This allows
     you to specify a list of image portal types that are display inside
@@ -26,15 +29,18 @@
     images to be referenced as thumbnails)     
     [ajung]
 
-  * added 'show_review_state' property [ajung]
+  * added 'show_review_state' property
+    [ajung]
 
-  * extended functionality of startup_directory property [spamsch]
+  * extended functionality of startup_directory property
+    [spamsch]
      
   * added 'allow_ordering' property to order to allow reordering of multiValued 
-    ReferenceFields [ajung]
+    ReferenceFields
+    [ajung]
 
-  * added 'show_path' property  [ajung]
-  
+  * added 'show_path' property
+    [ajung]
  
 1.2
 ================

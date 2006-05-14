@@ -1,5 +1,5 @@
   ATReferenceBrowser
-  Copyright 2004 Danny Bloemendaal, danny dot bloemendaal at companion dot nl
+  Copyright 2006 Danny Bloemendaal, danny dot bloemendaal at companion dot nl
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
