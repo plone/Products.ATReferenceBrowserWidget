@@ -56,6 +56,9 @@ property then all the indexes will be shown (I think nobody should allow this to
     * show_review_state: allows you to display the workflow state for objects (off by default)
 
     * show_path: display the relative path (relative to the portal object) of referenced objects 
+
+    * only_for_review_states: items are only referencable if their workflow state matches the ones
+      a specified (default: None = no filtering by workflow state) 
       
     * force_close_on_insert: closes the popup when the user choses insert. This overrides the behavior in multiselect mode.
 

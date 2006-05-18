@@ -53,6 +53,8 @@
                       image_method widget/image_method|string:;
                       base_query python:widget.getBaseQuery(at_obj, field);
                       allowed_types base_query/portal_type;
+                      only_for_review_states widget/only_for_review_states;
+                      filter_review_states python: only_for_review_states is not None;
                       dummy python: not allowed_types and base_query.pop('portal_type');
                       force_close_on_insert python:widget.force_close_on_insert;
                       search_catalog widget/search_catalog|string:portal_catalog;
@@ -207,12 +209,16 @@
                           cellpadding="2"
                           tal:condition="batch">
                     <tbody>
+
+
                         <tal:results tal:repeat="item batch">
                             <tal:row  tal:define="uid item/aq_explicit/UID|string:'';
                                                   item_referenceable python:((allowed_types and (item.portal_type in allowed_types)) or not allowed_types);
+                                                  review_state_allows python: test(filter_review_states, getInfoFor(item, 'review_state', None) in only_for_review_states, True);
                                                   has_uid python:hasattr(item.aq_explicit, 'UID');
-                                                  referenceable python:has_uid and item_referenceable and item!=at_obj;
+                                                  referenceable python:has_uid and item_referenceable and review_state_allows and item!=at_obj;
                                                   color here/base_properties/discreetColor;">
+
                                 <tr tal:define="oddrow repeat/item/odd" 
                                     tal:attributes="class python:test(oddrow, 'even', 'odd')">
                                     <td tal:condition="image_portal_types">
