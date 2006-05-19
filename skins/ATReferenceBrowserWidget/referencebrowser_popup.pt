@@ -253,7 +253,7 @@
                                             />
                                         </div>
 
-                                        <div class="additionalInfo" tal:content="item/additionalReferenceInfo | nothing" />
+                                        <div class="additionalInfo" tal:content="structure item/additionalReferenceInfo | nothing" />
                                     </td>
 
                                     <td width="25%"
