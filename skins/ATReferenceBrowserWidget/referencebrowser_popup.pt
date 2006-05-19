@@ -252,6 +252,8 @@
                                                   i18n:translate="" i18n:domain="plone" tal:content="state" 
                                             />
                                         </div>
+
+                                        <div class="additionalInfo" tal:content="item/additionalReferenceInfo | nothing" />
                                     </td>
 
                                     <td width="25%"
