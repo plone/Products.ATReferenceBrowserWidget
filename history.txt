@@ -1,4 +1,4 @@
-1.4 - Unreleased
+1.4 - Released June 1, 2006
 ===========================
 
  * added 'only_for_review_states' property.
