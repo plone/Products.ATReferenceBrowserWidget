@@ -1,11 +1,12 @@
 1.4 - Unreleased
 ===========================
 
- * added 'only_for_review_states' property [ajung]
+ * added 'only_for_review_states' property.
+   [ajung]
 
- * added support for (optional) 'additionalReferenceInfo' method  that can
-   be used to add additional information for referencable items [ajung]
-
+ * added support for (optional) 'additionalReferenceInfo' method that can be
+   used to add additional information for referencable items.
+   [ajung]
 
 1.3 - Released May 15, 2006
 ===========================
