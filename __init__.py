@@ -1,6 +1,9 @@
 from Products.CMFCore import utils
 from Products.CMFCore.DirectoryView import registerDirectory
-from Products.Archetypes.public import process_types, listTypes
+try:
+    from Products.Archetypes.atapi import process_types, listTypes
+except ImportError:
+    from Products.Archetypes.public import process_types, listTypes
 from config import *
 
 registerDirectory(SKINS_DIR, GLOBALS)

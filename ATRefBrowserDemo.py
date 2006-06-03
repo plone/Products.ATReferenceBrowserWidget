@@ -1,6 +1,10 @@
 """ demonstrates the use of ATReferenceBrowserWidget """
 
-from Products.Archetypes.public import *
+try:
+    from Products.Archetypes.atapi import *
+except ImportError:
+    from Products.Archetypes.public import *
+
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import *
 from DateTime import DateTime
 

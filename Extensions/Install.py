@@ -1,6 +1,6 @@
 from StringIO import StringIO
 from Products.CMFCore.utils import getToolByName
-from Products.Archetypes.public import listTypes
+from Products.Archetypes.atapi import listTypes
 from Products.Archetypes.Extensions.utils import installTypes, install_subskin
 
 from Products.ATReferenceBrowserWidget.config import *
