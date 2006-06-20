@@ -95,7 +95,7 @@
                    <input type="hidden" name="fieldName" tal:attributes="value fieldName" />
                    <input type="hidden" name="at_url" tal:attributes="value at_url" />
                    <input type="hidden" name="clear:int" value="1" />
-                   <label for="path" i18n:attributes="referencebrowser_history">History</label>
+                   <label for="path" i18n:translate="referencebrowser_history">History</label>
                    <select name="path" size="1">
                        <option value="" i18n:translate="" /> 
                        <option tal:repeat="tp history"
