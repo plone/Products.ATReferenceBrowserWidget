@@ -28,6 +28,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
         'only_for_review_states' : None,
         'image_portal_types' : (),
         'image_method' : None,
+        'history_length' : 0,
         })
 
     # default_search_index: when a user searches in the popup, this index is used by default

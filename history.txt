@@ -1,5 +1,10 @@
+1.5 - Unreleased
+================
  * Fixed some import locations for AT 1.5 compatibility.
    [hannosch]
+
+ * added 'history_length' property 
+   [ajung]
 
 1.4 - Released June 1, 2006
 ===========================

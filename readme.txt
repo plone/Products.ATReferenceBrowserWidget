@@ -59,6 +59,9 @@ property then all the indexes will be shown (I think nobody should allow this to
 
     * only_for_review_states: items are only referencable if their workflow state matches the ones
       a specified (default: None = no filtering by workflow state) 
+
+    * history_length: enable a history feature that show the paths of the last N visited folders
+      (default : 0 = no history)
       
     * force_close_on_insert: closes the popup when the user choses insert. This overrides the behavior in multiselect mode.
 

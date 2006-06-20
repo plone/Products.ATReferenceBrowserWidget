@@ -28,6 +28,12 @@
             inner = document.getElementById('messageTitle');
             inner.innerHTML = message;
          }
+         function submitHistoryForm() {
+             var form = document.history;
+             var path = form.path.options[form.path.selectedIndex].value;
+             form.action = path;
+             form.submit();
+         }
     </script>
 </head>
     <body class="popup atrefbrowser" onload="focus();self.name='referencebrowser_popup'" style="margin: 4px;padding:0.5em;" 
@@ -54,6 +60,8 @@
                       base_query python:widget.getBaseQuery(at_obj, field);
                       allowed_types base_query/portal_type;
                       only_for_review_states widget/only_for_review_states;
+                      history_length widget/history_length;
+                      history python: request.SESSION.get('atrefbrowserwidget_history', [])[:];
                       filter_review_states python: only_for_review_states is not None;
                       dummy python: not allowed_types and base_query.pop('portal_type');
                       force_close_on_insert python:widget.force_close_on_insert;
@@ -64,11 +72,38 @@
                       b_start python:0;
                       b_start request/b_start | b_start;
                       Batch python:modules['Products.CMFPlone'].Batch;">
+
+        <tal:if condition="python: history_length > 0">
+            <tal:insert define="dummy python: context.referencebrowser_insertHistory(request['PATH_TRANSLATED'], history_length)"/>
+        </tal:if>
+
         <div style="text-align:right;margin-bottom:-1.4em;margin-top:1em;">
            <a href="javascript:history.back()" i18n:translate="referencebrowser_back">back</a>
            |
            <a href="javascript:window.close()" i18n:translate="referencebrowser_close">close window</a>
         </div>
+            
+        <div style="text-align:right;margin-bottom:1.5em; margin-top: 2.5em;">
+           <div tal:condition="python: history_length > 0 ">
+               <form action="referencebrowser_popup" method="GET" name="history" id="history">
+                   <input type="hidden" name="fieldRealName" tal:attributes="value fieldRealName" />
+                   <input type="hidden" name="fieldName" tal:attributes="value fieldName" />
+                   <input type="hidden" name="at_url" tal:attributes="value at_url" />
+                   <label for="path" i18n:attributes="referencebrowser_history">History</label>
+                   <select name="path" size="1">
+                       <option value="" i18n:translate="" /> 
+                       <option tal:repeat="tp history"
+                               tal:content="python: tp[1]"
+                               tal:attributes="value python: tp[0]" 
+                       />
+                   </select>
+                   <input class="context" type="button" value="Go" 
+                          onclick="submitHistoryForm()"
+                          i18n:translate="value" />
+               </form>
+           </div>
+        </div>
+    
         <h2 tal:content="title" />
         <p class="formHelp"
              style="font-size:105%"
