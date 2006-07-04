@@ -108,7 +108,7 @@
                           i18n:translate="value" />
                </form>             
                <div tal:condition="history">
-                  <a tal:attributes="href string:${request/ACTUAL_URL}?${request/QUERY_STRING}&clearHistory=1" i18n:translate="referencebrowser_clearhistory">Clear history</a>
+                  <a tal:attributes="href string:${request/ACTUAL_URL}?${request/QUERY_STRING}&amp;clearHistory=1" i18n:translate="referencebrowser_clearhistory">Clear history</a>
                </div>
            </div>
         </div>

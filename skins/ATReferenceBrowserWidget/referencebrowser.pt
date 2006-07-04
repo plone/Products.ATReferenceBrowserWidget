@@ -21,8 +21,9 @@
                            obj ref/getTargetObject;
                            obj_path python: '/'.join(obj.getPhysicalPath())">
             <tal:if condition="image_portal_types">
-              <img tal:condition="python: obj.portal_type in image_portal_types"
-                   tal:attributes="src string:${obj/absolute_url}/$image_method" 
+              <img src="#" alt="Image"
+                   tal:condition="python: obj.portal_type in image_portal_types"
+                   tal:attributes="src string:${obj/absolute_url}/$image_method"
               />
             </tal:if>
 

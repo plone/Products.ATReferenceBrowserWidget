@@ -1,5 +1,9 @@
 1.5 - Unreleased
 ================
+
+ * Corrected two little XHTML conformance issues.
+   [hannosch]  
+
  * Fixed some import locations for AT 1.5 compatibility.
    [hannosch]
 
