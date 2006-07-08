@@ -1,6 +1,10 @@
 1.5 - Unreleased
 ================
 
+ * Fixed unclickable back and close links in the popup view in IE. This closes
+   http://dev.plone.org/plone/ticket/5491.
+   [hannosch]
+
  * Corrected two little XHTML conformance issues.
    [hannosch]  
 
