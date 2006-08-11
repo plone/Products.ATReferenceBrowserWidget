@@ -58,7 +58,7 @@ for k, v in REQUEST.items():
         key = k[:-6]
         param, value = v.split(':')
         second_pass[key] = {param:value}
-    elif k=='sort_on' or k=='sort_order' or k=='sort_limit':
+    elif k in ('sort_on', 'sort_order', 'sort_limit'):
         query.update({k:v})
 
 for k, v in second_pass.items():
