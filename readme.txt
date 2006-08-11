@@ -33,6 +33,8 @@ is what the end-users sees to make the indexes more sensible for him. If you do 
 property then all the indexes will be shown (I think nobody should allow this to happen!).
 
     * allow_search: shows the search section in the popup
+
+    * allow_sorting: allows you change the order of referenced objects (requires multiValued=1)
     
     * allow_browse: shows the browse section in the popup
     
