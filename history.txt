@@ -1,6 +1,9 @@
 1.5 - Unreleased
 ================
 
+ * Fixed incorrect i18n markup.
+   [hannosch]
+
  * Fixed unclickable back and close links in the popup view in IE. This closes
    http://dev.plone.org/plone/ticket/5491.
    [hannosch]
