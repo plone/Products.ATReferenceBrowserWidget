@@ -1,5 +1,5 @@
-1.5 - Unreleased
-================
+1.5 - Released September 8, 2006
+================================
 
  * Fixed incorrect i18n markup.
    [hannosch]
