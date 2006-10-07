@@ -58,6 +58,7 @@
                       show_review_state widget/show_review_state;
                       image_portal_types widget/image_portal_types;
                       image_method widget/image_method|string:;
+                      restrict_browsing_to_startup_directory widget/restrict_browsing_to_startup_directory|python: True;
                       base_query python:widget.getBaseQuery(at_obj, field);
                       allowed_types base_query/portal_type;
                       only_for_review_states widget/only_for_review_states;
@@ -206,21 +207,25 @@
                      tal:define=    "portal here/portal_url/getPortalObject;
                                      putils nocall:portal/plone_utils;
                                      crumbs python:putils.createBreadCrumbs(here);
+                                     crumbs python: test(True, context.referencebrowser_filterBreadCrumbs(crumbs, widget.startup_directory), crumbs); 
                                      isRTL python:here.isRightToLeft(domain='plone');
                                      parents request/PARENTS;
                                      nil python: parents.reverse();">
                                      
                 <img tal:attributes="src string:${here/portal_url}/logoIcon.gif"/>
-                <a i18n:translate="tabs_home"
-                   tal:attributes="href string:${portal/absolute_url}/${template/getId}?fieldName=${fieldName}&amp;fieldRealName=${fieldRealName}&amp;at_url=${at_url}">
-                    Home
-                </a>
+                <tal:if condition="not: restrict_browsing_to_startup_directory">
+                    <a i18n:translate="tabs_home"
+                       tal:attributes="href string:${portal/absolute_url}/${template/getId}?fieldName=${fieldName}&amp;fieldRealName=${fieldRealName}&amp;at_url=${at_url}">
+                        Home
+                    </a>
 
-                <span tal:condition="crumbs" class="breadcrumbSeparator">
-                    <tal:ltr condition="not: isRTL">&rarr;</tal:ltr> 
-                    <tal:rtl condition="isRTL">&larr;</tal:rtl> 
-                </span>                
+                    <span tal:condition="crumbs" class="breadcrumbSeparator">
+                        <tal:ltr condition="not: isRTL">&rarr;</tal:ltr> 
+                        <tal:rtl condition="isRTL">&larr;</tal:rtl> 
+                    </span>                
+                </tal:if>
 
+ 
                 <tal:crums tal:repeat="crumb crumbs">            
 
                     <a tal:attributes="href string:${crumb/absolute_url}/${template/getId}?fieldName=${fieldName}&amp;fieldRealName=${fieldRealName}&amp;at_url=${at_url}">

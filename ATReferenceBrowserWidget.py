@@ -29,6 +29,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
         'image_portal_types' : (),
         'image_method' : None,
         'history_length' : 0,
+        'restrict_browsing_to_startup_directory' : 0,
         })
 
     # default_search_index: when a user searches in the popup, this index is used by default
@@ -93,6 +94,7 @@ registerPropertyType('available_indexes', 'dictionary', ReferenceBrowserWidget)
 registerPropertyType('allow_search', 'boolean', ReferenceBrowserWidget)
 registerPropertyType('allow_browse', 'boolean', ReferenceBrowserWidget)
 registerPropertyType('startup_directory', 'string', ReferenceBrowserWidget)
+registerPropertyType('restrict_browsing_to_startup_directory', 'boolean', ReferenceBrowserWidget)
 registerPropertyType('search_catalog', 'string', ReferenceBrowserWidget)
 registerPropertyType('image_portal_types', 'lines', ReferenceBrowserWidget)
 registerPropertyType('image_method', 'string', ReferenceBrowserWidget)
