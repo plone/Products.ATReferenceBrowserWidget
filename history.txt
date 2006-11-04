@@ -1,7 +1,14 @@
 1.6 - Unreleased
 ================
 
- *
+ * listFolderContents requires 'List folder contents' which isn't always
+   available, avoid unauthorized errors in these cases by returning []. This
+   makes the popup marginally less efficient for some combinations of widget
+   parameters.
+   [alecm]
+
+ * added 'restrict_browsing_to_startup_directory' property
+   [ajung]
 
 1.5 - Released September 8, 2006
 ================================
@@ -20,9 +27,6 @@
    [hannosch]
 
  * added 'history_length' property 
-   [ajung]
-
- * added 'restrict_browsing_to_startup_directory' property
    [ajung]
 
 1.4 - Released June 1, 2006
