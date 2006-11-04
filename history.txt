@@ -1,5 +1,5 @@
-1.6 - Unreleased
-================
+1.6 - Released November 4, 2006
+===============================
 
  * listFolderContents requires 'List folder contents' which isn't always
    available, avoid unauthorized errors in these cases by returning []. This
