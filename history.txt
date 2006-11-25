@@ -1,3 +1,7 @@
+ * Fixed simple TAL markup bug which prevented show_review_state from working.
+   This closes http://dev.plone.org/plone/ticket/5924.
+   [hannosch]
+
 1.6 - Released November 4, 2006
 ===============================
 
