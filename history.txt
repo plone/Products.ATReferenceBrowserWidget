@@ -1,6 +1,7 @@
  * skins/ATReferenceBrowserWidget/referencebrowser.js
    now the popup also works for multiselect archetypes fields with the id content.
    (see comments in referencebrowser_setReference)
+   https://dev.plone.org/plone/ticket/5996
    [fRiSi]
 
  * skins/ATReferenceBrowserWidget/referencebrowser.pt
