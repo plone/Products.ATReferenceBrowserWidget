@@ -9,19 +9,28 @@ function referencebrowser_setReference(widget_id, uid, label, multi)
 {
     // differentiate between the single and mulitselect widget
     // since the single widget has an extra label field.
+
+    // [fRiSi]
+    // if you have widget with id 'content' document.getElementById
+    // will return the content div.
+    // in this case it would be save to search for the div 'archetypes-fieldname-content'
+    // and within this div search for a object with id 'content'
+    // #XXX use a library for this or use childNodes or getElementsByTagName
     if (multi==0) {
         element=document.getElementById(widget_id)
         label_element=document.getElementById(widget_id + '_label')
         element.value=uid
         label_element.value=label
      }  else {
-         list=document.getElementById(widget_id)
+         // multiselects have a :list appended to the name,
+         // so we can find them like this
+         list=document.getElementsByName(widget_id + ':list')
          // check if the item isn't already in the list
           for (var x=0; x < list.length; x++) {
             if (list[x].value == uid) {
               return false;
             }
-          }         
+          }
           // now add the new item
           theLength=list.length;
           list[theLength] = new Option(label);
@@ -43,7 +52,7 @@ function referencebrowser_removeReference(widget_id, multi)
         }
         for (var x=0; x < list.length; x++) {
             list[x].selected='selected';
-          }        
+          }
     } else {
         element=document.getElementById(widget_id);
         label_element=document.getElementById(widget_id + '_label');
