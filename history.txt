@@ -1,14 +1,15 @@
- * skins/ATReferenceBrowserWidget/referencebrowser.js
-   now the popup also works for multiselect archetypes fields with the id content.
-   (see comments in referencebrowser_setReference)
-   https://dev.plone.org/plone/ticket/5996
+1.7 - Released December 13, 2006
+================================
+
+ * Now the popup also works for multiselect archetypes fields with the id
+   content (see comments in referencebrowser_setReference).
+   http://dev.plone.org/plone/ticket/5996
    [fRiSi]
 
- * skins/ATReferenceBrowserWidget/referencebrowser.pt
-   the widget now tries to sort references on their `order` attribute which
-   only exists for orderablereferencefield references. (therefore the tal:on-error)
-   this solves https://dev.plone.org/plone/ticket/5995 but could
-   be relaced by a condition such as widget/isOrderable as proposed in #5995
+ * The widget now tries to sort references on their `order` attribute which
+   only exists for orderablereferencefield references. (therefore the
+   tal:on-error). This solves http://dev.plone.org/plone/ticket/5995 but could
+   be relaced by a condition such as widget/isOrderable as proposed in #5995.
    [fRiSi]
 
  * Fixed simple TAL markup bug which prevented show_review_state from working.
