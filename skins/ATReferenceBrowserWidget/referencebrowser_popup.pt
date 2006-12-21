@@ -189,7 +189,7 @@
            <span i18n:translate="referencebrowser_text_added_reference">Added reference to:</span>&nbsp;<span id="messageTitle"></span>
         </div>
         <!-- actual list of objects, either searchresults or folder contents -->
-        <tal:block tal:define="query_results python:(search_text or not allow_browse) and [brain.getObject() for brain in here.referencebrowser_queryCatalog(search_catalog=search_catalog)];">
+        <tal:block tal:define="query_results python:search_text and [brain.getObject() for brain in here.referencebrowser_queryCatalog(search_catalog=search_catalog)];">
             <div style="border-top:1px solid black;border-bottom:1px solid black;"
                      tal:attributes="style string:border-top:1px solid ${border_color};;
                                            border-bottom:1px solid ${border_color};;
