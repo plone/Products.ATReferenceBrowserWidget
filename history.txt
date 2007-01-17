@@ -1,3 +1,13 @@
+1.7.1 Released January 16, 2006
+===============================
+
+ * No longer show all search results by default when allow_browse is off
+   because it can be very very slow.
+   [alecm]
+
+ * Undid the fix for #5996, because it broke basic functionality.
+   [ajung]
+
 1.7 - Released December 13, 2006
 ================================
 
