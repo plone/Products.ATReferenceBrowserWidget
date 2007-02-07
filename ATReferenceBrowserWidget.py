@@ -30,6 +30,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
         'image_method' : None,
         'history_length' : 0,
         'restrict_browsing_to_startup_directory' : 0,
+        'show_results_without_query': 0,
         })
 
     # default_search_index: when a user searches in the popup, this index is used by default

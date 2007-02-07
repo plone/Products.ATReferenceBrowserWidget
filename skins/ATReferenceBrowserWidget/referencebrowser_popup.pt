@@ -56,6 +56,7 @@
                       allow_search python:widget.allow_search;
                       allow_browse python:widget.allow_browse;
                       show_review_state widget/show_review_state;
+                      always_show widget/show_results_without_query|nothing;
                       image_portal_types widget/image_portal_types;
                       image_method widget/image_method|string:;
                       restrict_browsing_to_startup_directory widget/restrict_browsing_to_startup_directory|python: True;
@@ -189,7 +190,7 @@
            <span i18n:translate="referencebrowser_text_added_reference">Added reference to:</span>&nbsp;<span id="messageTitle"></span>
         </div>
         <!-- actual list of objects, either searchresults or folder contents -->
-        <tal:block tal:define="query_results python:search_text and [brain.getObject() for brain in here.referencebrowser_queryCatalog(search_catalog=search_catalog)];">
+        <tal:block tal:define="query_results python:(always_show or search_text) and [brain.getObject() for brain in here.referencebrowser_queryCatalog(search_catalog=search_catalog)];">
             <div style="border-top:1px solid black;border-bottom:1px solid black;"
                      tal:attributes="style string:border-top:1px solid ${border_color};;
                                            border-bottom:1px solid ${border_color};;
