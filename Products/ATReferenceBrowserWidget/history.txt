@@ -1,0 +1,220 @@
+2.0 Unreleased
+================
+
+ * Removed lots of BBB code. We require Archetypes 1.5 now.
+   [hannosch]
+
+ * Replaced renderAllTheStylesheets with new content provider for inclusion of
+   the CSS files.
+   [fschulze]
+
+ * Add an option to show all results immediately.
+   [alecm]
+
+ * Added .metadata files for the two javascripts to tie them to the
+   HTTPCACHE. 
+   [reinout]
+
+1.7.1 Released January 16, 2006
+===============================
+
+ * No longer show all search results by default when allow_browse is off
+   because it can be very very slow.
+   [alecm]
+
+ * Undid the fix for #5996, because it broke basic functionality.
+   [ajung]
+
+1.7 - Released December 13, 2006
+================================
+
+ * Now the popup also works for multiselect archetypes fields with the id
+   content (see comments in referencebrowser_setReference).
+   http://dev.plone.org/plone/ticket/5996
+   [fRiSi]
+
+ * The widget now tries to sort references on their `order` attribute which
+   only exists for orderablereferencefield references. (therefore the
+   tal:on-error). This solves http://dev.plone.org/plone/ticket/5995 but could
+   be relaced by a condition such as widget/isOrderable as proposed in #5995.
+   [fRiSi]
+
+ * Fixed simple TAL markup bug which prevented show_review_state from working.
+   This closes http://dev.plone.org/plone/ticket/5924.
+   [hannosch]
+
+1.6 - Released November 4, 2006
+===============================
+
+ * listFolderContents requires 'List folder contents' which isn't always
+   available, avoid unauthorized errors in these cases by returning []. This
+   makes the popup marginally less efficient for some combinations of widget
+   parameters.
+   [alecm]
+
+ * added 'restrict_browsing_to_startup_directory' property
+   [ajung]
+
+1.5 - Released September 8, 2006
+================================
+
+ * Fixed incorrect i18n markup.
+   [hannosch]
+
+ * Fixed unclickable back and close links in the popup view in IE. This closes
+   http://dev.plone.org/plone/ticket/5491.
+   [hannosch]
+
+ * Corrected two little XHTML conformance issues.
+   [hannosch]
+
+ * Fixed some import locations for AT 1.5 compatibility.
+   [hannosch]
+
+ * added 'history_length' property
+   [ajung]
+
+1.4 - Released June 1, 2006
+===========================
+
+ * added 'only_for_review_states' property.
+   [ajung]
+
+ * added support for (optional) 'additionalReferenceInfo' method that can be
+   used to add additional information for referencable items.
+   [ajung]
+
+1.3 - Released May 15, 2006
+===========================
+
+ * Removed empty and unused i18n folder.
+   [hannosch]
+
+ * Allow empty queries if there are some other constrains provided and
+   allow_browse is false. This closes http://dev.plone.org/plone/ticket/5181.
+   [hannosch]
+
+ * skins/.../referencebrowser_popup.pt:
+   - Changed call to ``here.folderlistingFolderContents()`` back to
+     ``here.listFolderContents()`` because this method is not available on
+     the ``Plone Site`` object. (so Home did no longer work)
+
+   - Refactored the breadcrumb area to not use REQUEST['PARENTS'] anymore
+     and added i18n support (RTL and translation for 'Home')
+
+     REQUEST['PARENTS'] was evil because if did not work out for sites
+     that switch the skin by url and manipulate SiteRoot
+
+     (see http://plone.org/documentation/how-to/select-skin-by-url)
+
+   [fRiSi]
+
+  * added 'image_portal_types' and 'image_method' properties. This allows
+    you to specify a list of image portal types that are display inside
+    the popup widget as images using the 'image_method' (e.g. to show
+    images to be referenced as thumbnails)
+    [ajung]
+
+  * added 'show_review_state' property
+    [ajung]
+
+  * extended functionality of startup_directory property
+    [spamsch]
+
+  * added 'allow_sorting' property to order to allow reordering of multiValued
+    ReferenceFields
+    [ajung]
+
+  * added 'show_path' property
+    [ajung]
+
+1.2
+================
+
+ * Added a slot for overriding the 'at_url' path to the object, so that the
+   widget can be used in scenarios where the path to the relevant object
+   isn't so obvious (in Fate for example).
+   [alecm]
+
+ * skins/.../referencebrowser_popup.pt:
+   Changed call to 'here.listFolderContents()' to
+   'here.folderlistingFolderContents()' in order to avoid requiring
+   the 'List folder contents' permission on the folder to be browsed.
+   [raphael]
+
+ * Made compatible with CMF 2.0 (CMF <= 1.4) isn't supported anymore
+   [hannosch]
+
+1.1
+================
+
+ * Added handler for the popup
+ * Removed duplicate color definition in popup window
+
+1.0.1
+================
+
+  * converted templates to own i18n domain (hannosch)
+  * fixed an allowed_types_method handling bug
+    (http://members.plone.org/collector/4131). (alecm)
+  * fieldName may not be the same as field.getName() due to the way
+    BaseObject.widget() works.  This strangeness is used to make
+    Topics/Criteria work, but makes ATRBW unusable in criteria.  Now it works.
+    (alecm)
+  * Fixed allowed_types handling so that it respects allowed_types_method, and
+    fixed the method handling. (alecm)
+  * Fixed some base_query brokenness when allow_browse is enabled. (alecm)
+  * added i18n infrastructure (hannosch, naro)
+  * added support for CSSRegistry
+
+1.0
+================
+  * added property (search_catalog) to allow querying of alternate catalogs
+    (e.g. CMFMember's member_catalog). (alecm)
+
+  * added message in the popup when adding items in multi-select mode. Thanks
+    to Limi.
+
+  * fixed a bug that occured when setting references on objects located
+    in the portal root. Thanks to AlecM.
+
+  * Added base_query property which takes a dictionary or method that returns
+    a dictionary containing a catalog query to use as a filter (most useful
+    with allow_browse disabled).  All portal_type restrictions use this
+    mechanism now which allows for proper use of the field property
+    allowed_types_method to make the types restrictions dynamic. (alecm)
+
+0.2.1
+================
+  * fixed problem with portal_factory
+
+  * fixed problem with startup_directory
+
+  * removed automatic install of the demo type.
+
+  * added startup_directory patch from optilude (thanks)
+
+
+0.2 - 2004-09-09
+================
+
+  * added batched view
+
+  * fixed a problem with multiValued
+
+  * added view link that opens the object in a new browser
+    window so you can check if that's the object
+    you are looking for
+
+  * added 'back' link that does a javascript:history.back()
+    so you can return to the browser mode after you've
+    done a search.
+
+  * removed possibility to link to the object itself.
+
+  * made the popup window a bit wider and higher
+
+  * modified the 'close window' link. Now sits next to the 'back' link.
+
+  * added startup_directory property for the widget to force another
+    startup folder in the portal for the popup window.
