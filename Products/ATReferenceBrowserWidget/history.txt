@@ -1,47 +1,52 @@
-2.0 Unreleased
-================
+Changelog for ATReferenceBrowserWidget
 
- * Removed lots of BBB code. We require Archetypes 1.5 now.
-   [hannosch]
+    (name of developer listed in brackets)
 
- * Replaced renderAllTheStylesheets with new content provider for inclusion of
-   the CSS files.
-   [fschulze]
+ATReferenceBrowserWidget 2.0b1 - Released March 5, 2007
 
- * Add an option to show all results immediately.
-   [alecm]
+    - Converted to a regular Python package in the Products namespace.
+      [hannosch]
 
- * Added .metadata files for the two javascripts to tie them to the
-   HTTPCACHE. 
-   [reinout]
+    - Removed lots of BBB code. We require Archetypes 1.5 now.
+      [hannosch]
 
-1.7.1 Released January 16, 2006
-===============================
+    - Replaced renderAllTheStylesheets with new content provider for inclusion
+      of the CSS files.
+      [fschulze]
 
- * No longer show all search results by default when allow_browse is off
-   because it can be very very slow.
-   [alecm]
+    - Add an option to show all results immediately.
+      [alecm]
 
- * Undid the fix for #5996, because it broke basic functionality.
-   [ajung]
+    - Added .metadata files for the two javascripts to tie them to the
+      HTTPCACHE. 
+      [reinout]
 
-1.7 - Released December 13, 2006
-================================
+ATReferenceBrowserWidget 1.7.1 - Released January 16, 2006
 
- * Now the popup also works for multiselect archetypes fields with the id
-   content (see comments in referencebrowser_setReference).
-   http://dev.plone.org/plone/ticket/5996
-   [fRiSi]
+    - No longer show all search results by default when allow_browse is off
+      because it can be very very slow.
+      [alecm]
 
- * The widget now tries to sort references on their `order` attribute which
-   only exists for orderablereferencefield references. (therefore the
-   tal:on-error). This solves http://dev.plone.org/plone/ticket/5995 but could
-   be relaced by a condition such as widget/isOrderable as proposed in #5995.
-   [fRiSi]
+    - Undid the fix for #5996, because it broke basic functionality.
+      [ajung]
 
- * Fixed simple TAL markup bug which prevented show_review_state from working.
-   This closes http://dev.plone.org/plone/ticket/5924.
-   [hannosch]
+ATReferenceBrowserWidget 1.7 - Released December 13, 2006
+
+    - Now the popup also works for multiselect archetypes fields with the id
+      content (see comments in referencebrowser_setReference).
+      http://dev.plone.org/plone/ticket/5996
+      [fRiSi]
+
+    - The widget now tries to sort references on their `order` attribute which
+      only exists for orderablereferencefield references. (therefore the
+      tal:on-error). This solves http://dev.plone.org/plone/ticket/5995 but
+      could be relaced by a condition such as widget/isOrderable as proposed
+      in #5995.
+      [fRiSi]
+
+    - Fixed simple TAL markup bug which prevented show_review_state from
+      working. This closes http://dev.plone.org/plone/ticket/5924.
+      [hannosch]
 
 1.6 - Released November 4, 2006
 ===============================

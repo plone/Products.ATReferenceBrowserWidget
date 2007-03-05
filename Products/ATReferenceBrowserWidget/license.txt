@@ -1,4 +1,4 @@
-  ATReferenceBrowser
+  ATReferenceBrowserWidget
   Copyright 2006-2007
   Danny Bloemendaal, danny dot bloemendaal at companion dot nl
 

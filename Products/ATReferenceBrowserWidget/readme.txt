@@ -127,8 +127,7 @@ changes in the base_edit form I think. But it's something to think about since
 there are now already two widgets that needs to be prepared like this (inandout
 and this one, haven't looked at picklist though, could have the same problem).
 
-Anyway, have fun with it and if you have suggestions please let me know. If you see problems, please fix
-them when you can.
+Anyway, have fun with it and if you have suggestions please let me know. If you
+see problems, please fix them when you can.
 
 Danny Bloemendaal
-danny.bloemendaal@companion.nl
