@@ -1,6 +1,0 @@
- * own stylesheet?
- 
- * in case of a single valued field, perhaps open the popup in the location
-    of where the current field value's object resides.
-    
- * use the friendly named indexes from ATCT topic tool.
