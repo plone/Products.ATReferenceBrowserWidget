@@ -48,178 +48,178 @@ ATReferenceBrowserWidget 1.7 - Released December 13, 2006
       working. This closes http://dev.plone.org/plone/ticket/5924.
       [hannosch]
 
-1.6 - Released November 4, 2006
-===============================
+ATReferenceBrowserWidget 1.6 - Released November 4, 2006
 
- * listFolderContents requires 'List folder contents' which isn't always
-   available, avoid unauthorized errors in these cases by returning []. This
-   makes the popup marginally less efficient for some combinations of widget
-   parameters.
-   [alecm]
+    - listFolderContents requires 'List folder contents' which isn't always
+      available, avoid unauthorized errors in these cases by returning []. This
+      makes the popup marginally less efficient for some combinations of widget
+      parameters.
+      [alecm]
 
- * added 'restrict_browsing_to_startup_directory' property
-   [ajung]
+    - added 'restrict_browsing_to_startup_directory' property
+      [ajung]
 
-1.5 - Released September 8, 2006
-================================
+ATReferenceBrowserWidget 1.5 - Released September 8, 2006
 
- * Fixed incorrect i18n markup.
-   [hannosch]
+    - Fixed incorrect i18n markup.
+      [hannosch]
 
- * Fixed unclickable back and close links in the popup view in IE. This closes
-   http://dev.plone.org/plone/ticket/5491.
-   [hannosch]
+    - Fixed unclickable back and close links in the popup view in IE. This
+      closes http://dev.plone.org/plone/ticket/5491.
+      [hannosch]
 
- * Corrected two little XHTML conformance issues.
-   [hannosch]
+    - Corrected two little XHTML conformance issues.
+      [hannosch]
 
- * Fixed some import locations for AT 1.5 compatibility.
-   [hannosch]
+    - Fixed some import locations for AT 1.5 compatibility.
+      [hannosch]
 
- * added 'history_length' property
-   [ajung]
+    - added 'history_length' property
+      [ajung]
 
-1.4 - Released June 1, 2006
-===========================
+ATReferenceBrowserWidget 1.4 - Released June 1, 2006
 
- * added 'only_for_review_states' property.
-   [ajung]
+    - added 'only_for_review_states' property.
+      [ajung]
 
- * added support for (optional) 'additionalReferenceInfo' method that can be
-   used to add additional information for referencable items.
-   [ajung]
+    - added support for (optional) 'additionalReferenceInfo' method that can be
+      used to add additional information for referencable items.
+      [ajung]
 
-1.3 - Released May 15, 2006
-===========================
+ATReferenceBrowserWidget 1.3 - Released May 15, 2006
 
- * Removed empty and unused i18n folder.
-   [hannosch]
+    - Removed empty and unused i18n folder.
+      [hannosch]
 
- * Allow empty queries if there are some other constrains provided and
-   allow_browse is false. This closes http://dev.plone.org/plone/ticket/5181.
-   [hannosch]
+    - Allow empty queries if there are some other constrains provided and
+      allow_browse is false. This closes http://dev.plone.org/plone/ticket/5181.
+      [hannosch]
 
- * skins/.../referencebrowser_popup.pt:
-   - Changed call to ``here.folderlistingFolderContents()`` back to
-     ``here.listFolderContents()`` because this method is not available on
-     the ``Plone Site`` object. (so Home did no longer work)
+    - Changed call to ``here.folderlistingFolderContents()`` back to
+      ``here.listFolderContents()`` because this method is not available on
+      the ``Plone Site`` object. (so Home did no longer work)
+      [fRiSi]
 
-   - Refactored the breadcrumb area to not use REQUEST['PARENTS'] anymore
-     and added i18n support (RTL and translation for 'Home')
+    - Refactored the breadcrumb area to not use REQUEST['PARENTS'] anymore
+      and added i18n support (RTL and translation for 'Home').
+      REQUEST['PARENTS'] was evil because if did not work out for sites that
+      that switch the skin by url and manipulate SiteRoot
+      [fRiSi]
 
-     REQUEST['PARENTS'] was evil because if did not work out for sites
-     that switch the skin by url and manipulate SiteRoot
+    - Added 'image_portal_types' and 'image_method' properties. This allows
+      you to specify a list of image portal types that are display inside
+      the popup widget as images using the 'image_method' (e.g. to show images
+      to be referenced as thumbnails)
+      [ajung]
 
-     (see http://plone.org/documentation/how-to/select-skin-by-url)
+    - Added 'show_review_state' property
+      [ajung]
 
-   [fRiSi]
+    - Extended functionality of startup_directory property
+      [spamsch]
 
-  * added 'image_portal_types' and 'image_method' properties. This allows
-    you to specify a list of image portal types that are display inside
-    the popup widget as images using the 'image_method' (e.g. to show
-    images to be referenced as thumbnails)
-    [ajung]
+    - Added 'allow_sorting' property to order to allow reordering of
+      multiValued ReferenceFields.
+      [ajung]
 
-  * added 'show_review_state' property
-    [ajung]
+    - Added 'show_path' property
+      [ajung]
 
-  * extended functionality of startup_directory property
-    [spamsch]
+ATReferenceBrowserWidget 1.2
 
-  * added 'allow_sorting' property to order to allow reordering of multiValued
-    ReferenceFields
-    [ajung]
+    - Added a slot for overriding the 'at_url' path to the object, so that the
+      widget can be used in scenarios where the path to the relevant object
+      isn't so obvious (in Fate for example).
+      [alecm]
 
-  * added 'show_path' property
-    [ajung]
+    - skins/.../referencebrowser_popup.pt:
+      Changed call to 'here.listFolderContents()' to
+      'here.folderlistingFolderContents()' in order to avoid requiring
+      the 'List folder contents' permission on the folder to be browsed.
+      [raphael]
 
-1.2
-================
+    - Made compatible with CMF 2.0 (CMF <= 1.4) isn't supported anymore
+      [hannosch]
 
- * Added a slot for overriding the 'at_url' path to the object, so that the
-   widget can be used in scenarios where the path to the relevant object
-   isn't so obvious (in Fate for example).
-   [alecm]
+ATReferenceBrowserWidget 1.1
 
- * skins/.../referencebrowser_popup.pt:
-   Changed call to 'here.listFolderContents()' to
-   'here.folderlistingFolderContents()' in order to avoid requiring
-   the 'List folder contents' permission on the folder to be browsed.
-   [raphael]
+    - Added handler for the popup.
 
- * Made compatible with CMF 2.0 (CMF <= 1.4) isn't supported anymore
-   [hannosch]
+    - Removed duplicate color definition in popup window.
 
-1.1
-================
+ATReferenceBrowserWidget 1.0.1
 
- * Added handler for the popup
- * Removed duplicate color definition in popup window
+    - Converted templates to own i18n domain
+      [hannosch]
 
-1.0.1
-================
+    - Fixed an allowed_types_method handling bug
+      [alecm]
 
-  * converted templates to own i18n domain (hannosch)
-  * fixed an allowed_types_method handling bug
-    (http://members.plone.org/collector/4131). (alecm)
-  * fieldName may not be the same as field.getName() due to the way
-    BaseObject.widget() works.  This strangeness is used to make
-    Topics/Criteria work, but makes ATRBW unusable in criteria.  Now it works.
-    (alecm)
-  * Fixed allowed_types handling so that it respects allowed_types_method, and
-    fixed the method handling. (alecm)
-  * Fixed some base_query brokenness when allow_browse is enabled. (alecm)
-  * added i18n infrastructure (hannosch, naro)
-  * added support for CSSRegistry
+    - fieldName may not be the same as field.getName() due to the way
+      BaseObject.widget() works. This strangeness is used to make
+      Topics/Criteria work, but makes ATRBW unusable in criteria. Now it works.
+      [alecm]
 
-1.0
-================
-  * added property (search_catalog) to allow querying of alternate catalogs
-    (e.g. CMFMember's member_catalog). (alecm)
+    - Fixed allowed_types handling so that it respects allowed_types_method,
+      and fixed the method handling.
+      [alecm]
 
-  * added message in the popup when adding items in multi-select mode. Thanks
-    to Limi.
+    - Fixed some base_query brokenness when allow_browse is enabled.
+      [alecm]
 
-  * fixed a bug that occured when setting references on objects located
-    in the portal root. Thanks to AlecM.
+    - Added i18n infrastructure.
+      [hannosch, naro]
 
-  * Added base_query property which takes a dictionary or method that returns
-    a dictionary containing a catalog query to use as a filter (most useful
-    with allow_browse disabled).  All portal_type restrictions use this
-    mechanism now which allows for proper use of the field property
-    allowed_types_method to make the types restrictions dynamic. (alecm)
+    - Added support for CSSRegistry.
 
-0.2.1
-================
-  * fixed problem with portal_factory
+ATReferenceBrowserWidget 1.0
 
-  * fixed problem with startup_directory
+    - Added property (search_catalog) to allow querying of alternate catalogs
+      (e.g. CMFMember's member_catalog).
+      [alecm]
 
-  * removed automatic install of the demo type.
+    - Added message in the popup when adding items in multi-select mode.
+      [limi]
 
-  * added startup_directory patch from optilude (thanks)
+    - Fixed a bug that occured when setting references on objects located
+      in the portal root.
+      [alecm]
 
+    - Added base_query property which takes a dictionary or method that returns
+      a dictionary containing a catalog query to use as a filter (most useful
+      with allow_browse disabled).  All portal_type restrictions use this
+      mechanism now which allows for proper use of the field property
+      allowed_types_method to make the types restrictions dynamic.
+      [alecm]
 
-0.2 - 2004-09-09
-================
+ATReferenceBrowserWidget 0.2.1
 
-  * added batched view
+    - Fixed problem with portal_factory.
 
-  * fixed a problem with multiValued
+    - Fixed problem with startup_directory.
 
-  * added view link that opens the object in a new browser
-    window so you can check if that's the object
-    you are looking for
+    - Removed automatic install of the demo type.
 
-  * added 'back' link that does a javascript:history.back()
-    so you can return to the browser mode after you've
-    done a search.
+    - Added startup_directory patch.
+      [optilude]
 
-  * removed possibility to link to the object itself.
+ATReferenceBrowserWidget 0.2 - Released September 9, 2004
 
-  * made the popup window a bit wider and higher
+    - Added batched view.
 
-  * modified the 'close window' link. Now sits next to the 'back' link.
+    - Fixed a problem with multiValued.
 
-  * added startup_directory property for the widget to force another
-    startup folder in the portal for the popup window.
+    - Added view link that opens the object in a new browser window so you
+      can check if that's the object you are looking for.
+
+    - Added 'back' link that does a javascript:history.back() so you can
+      return to the browser mode after you've done a search.
+
+    - Removed possibility to link to the object itself.
+
+    - Made the popup window a bit wider and higher.
+
+    - Modified the 'close window' link. Now sits next to the 'back' link.
+
+    - Added startup_directory property for the widget to force another
+      startup folder in the portal for the popup window.
