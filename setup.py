@@ -27,7 +27,4 @@ setup(name='Products.ATReferenceBrowserWidget',
       install_requires=[
         'setuptools',
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
 )

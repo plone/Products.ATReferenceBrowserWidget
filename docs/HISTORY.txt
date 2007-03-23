@@ -2,6 +2,11 @@ Changelog for ATReferenceBrowserWidget
 
     (name of developer listed in brackets)
 
+ATReferenceBrowserWidget 2.0b2 - Released March 23, 2007
+
+    - Replaced all getToolByName calls with getUtility.
+      [hannosch]
+
 ATReferenceBrowserWidget 2.0b1 - Released March 5, 2007
 
     - Converted to a regular Python package in the Products namespace.
