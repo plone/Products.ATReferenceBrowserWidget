@@ -103,7 +103,6 @@
                          fieldName fieldName;
                          fieldRealName field/getName;
                          uids python:same_type(value, []) and value or [value];
-                         types_param python:','.join(field.allowed_types)
                          ">
 
           <input type="hidden"
