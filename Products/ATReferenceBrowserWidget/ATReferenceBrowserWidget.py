@@ -12,7 +12,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
     _properties.update({
         'macro' : "referencebrowser",
         'size' : '',
-        'helper_js': ('referencebrowser.js', 'select_lists.js'),
+        'helper_js': ('referencebrowser.js',),
         'default_search_index':'SearchableText',
         'show_indexes':0,
         'available_indexes':{},

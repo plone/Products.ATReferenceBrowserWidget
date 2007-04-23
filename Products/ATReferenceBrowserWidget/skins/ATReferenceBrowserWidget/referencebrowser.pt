@@ -81,7 +81,7 @@
 
                 <tal:if condition="show_path"
                      i18n:translate="label_directory">
-                  ( Directory: <span i18n:name="directory" tal:replace="python: obj_path.replace(portal_path + '/', '') ">directory</span>)
+                  (Directory: <span i18n:name="directory" tal:replace="python: obj_path.replace(portal_path + '/', '') ">directory</span>)
                 </tal:if>
 
              </tal:block>
@@ -106,9 +106,9 @@
                          ">
 
           <input type="hidden"
-                             value=""
-                             tal:condition="python:not field.required and multiVal"
-                             tal:attributes="name string:$fieldName:default:list"
+                 value=""
+                 tal:condition="python:not field.required and multiVal"
+                 tal:attributes="name string:$fieldName:default:list"
                  />
 
           <tal:single tal:condition="not: multiVal" >
@@ -125,12 +125,11 @@
                                              id string:${fieldName}_label" readonly="readonly" />
 
                       <img tal:condition="python: obj.portal_type in image_portal_types"
-                            tal:attributes="src string:${obj/absolute_url}/$image_method"
-                      />
+                           tal:attributes="src string:${obj/absolute_url}/$image_method" />
 
                       <tal:if condition="show_path"
-                           i18n:translate="label_directory">
-                        ( Directory: <span i18n:name="directory" tal:replace="python: obj_path.replace(portal_path + '/', '')">directory</span>)
+                              i18n:translate="label_directory">
+                        (Directory: <span i18n:name="directory" tal:replace="python: obj_path.replace(portal_path + '/', '')">directory</span>)
                       </tal:if>
 
                   </tal:block>
@@ -153,56 +152,24 @@
           </tal:single>
           <tal:multi tal:condition="multiVal"
                      tal:define="targets python:[(here.reference_catalog.lookupObject(u),u) for u in uids if u]">
-              <div style="float: left">
-                <select multiple="multiple"
-                        tabindex=""
-                        tal:attributes="name string:${fieldName}:list;
-                                        id string:${fieldName};
-                                        size python:test(widget.size=='', 8, widget.size);
-                                        tabindex tabindex/next;">
-                    <tal:block tal:repeat="set targets">
-                        <option value=""
-                                selected="selected"
-                                tal:define="title    python: set[0].title_or_id();
-                                            obj_path python: '/'.join(set[0].getPhysicalPath());
-                                            title    python: show_path and '%s (%s)' % (title, obj_path.replace(portal_path, '')) or title"
-                                tal:attributes="value python:set[1];"
-                                tal:content="title">
-                            option
-                        </option>
-                  </tal:block>
-                </select>
-              </div>
-              <div style="float: left; margin-left: 2em;"
-                   tal:condition="field/widget/allow_sorting | nothing"
-                   class="reference-widget-sorting">
-                  <input style="width: 100pt"
-                         type="button"
-                         i18n:attributes="value label_move_top;"
-                         value="Move top"
-                         tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_to_top(el, pos);;"
-                  />
-                  <br/>
-                  <input style="width: 100pt"
-                         type="button"
-                         i18n:attributes="value label_move_up;"
-                         value="Move up"
-                         tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_up(el, pos);;"
-                  />
-                  <br/>
-                  <input style="width: 100pt"
-                         type="button"
-                         i18n:attributes="value label_move_down;"
-                         value="Move down"
-                         tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_down(el, pos);;"
-                  />
-                  <br/>
-                  <input style="width: 100pt"
-                         type="button"
-                         i18n:attributes="value label_move_bottom;"
-                         value="Move bottom"
-                         tal:attributes="onclick string:var el = document.getElementById('$fieldName');; var pos = el.selectedIndex;; entry_to_bottom(el, pos);;"
-                  />
+            <div style="float: left">
+<!-- This should be enabled if we can remove it when an item is inserted.
+              <p class="discreet"
+                 tal:condition="not: targets">No items currently selected</p>
+-->
+              <ul class="visualNoMarker"
+                  tal:attributes="id string:${fieldName};">
+                <li tal:repeat="set targets">
+                  <label tal:define="title    python: set[0].title_or_id();
+                                     obj_path python: '/'.join(set[0].getPhysicalPath());">
+                    <input type="checkbox" 
+                           tal:attributes="name string:${fieldName}:list; 
+                                           value python:set[1];" 
+                           checked="checked">
+                    <tal:block replace="python: show_path and '%s (%s)' % (title, obj_path.replace(portal_path, '')) or title" />
+                  </label>
+                </li>
+              </ul>
               </div>
           </tal:multi>
           <div style="clear: both"
@@ -210,31 +177,16 @@
                            global at_url at_url|python:'/'.join(here.getPhysicalPath())">
               <input type="button"
                      class="searchButton"
-                     value="Browse..."
+                     value="Add..."
                      onClick=""
                      i18n:attributes="value label_browse;"
                      tal:attributes="onClick string:javascript:referencebrowser_openBrowser('${startup_directory}','${fieldName}', '${at_url}', '${fieldRealName}')" />
-              <input type="button"
-                     class="destructive"
-                     value="Remove reference"
-                     onClick=""
-                     i18n:attributes="value label_remove_reference;"
-                     tal:condition="not: multiVal"
-                     tal:attributes="onClick string:javascript:referencebrowser_removeReference('${fieldName}', ${multiVal})" />
-              <input type="button"
-                     class="destructive"
-                     value="Remove selected items"
-                     onClick=""
-                     i18n:attributes="value label_remove_selected_items;"
-                     tal:condition="multiVal"
-                     tal:attributes="onClick string:javascript:referencebrowser_removeReference('${fieldName}', ${multiVal})" />
           </div>
           <!-- Todo? -->
           <metal:addable metal:use-macro="here/widgets/addable_support/macros/addable"/>
         </div>
       </metal:use>
     </metal:edit_macro>
-
     <metal:search_macro define-macro="search">
       <div metal:use-macro="here/widgets/reference/macros/edit"></div>
     </metal:search_macro>

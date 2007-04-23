@@ -15,18 +15,26 @@ function referencebrowser_setReference(widget_id, uid, label, multi)
         element.value=uid
         label_element.value=label
      }  else {
-         list=document.getElementById(widget_id)
          // check if the item isn't already in the list
-          for (var x=0; x < list.length; x++) {
-            if (list[x].value == uid) {
+         var current_values = cssQuery('#' + widget_id + ' input');
+         for (var i=0; i < current_values.length; i++) {
+            if (current_values[i].value == uid) {
               return false;
             }
           }         
           // now add the new item
-          theLength=list.length;
-          list[theLength] = new Option(label);
-          list[theLength].selected='selected';
-          list[theLength].value=uid
+          list=document.getElementById(widget_id);
+          li = document.createElement('li');
+          label_element = document.createElement('label');
+          input = document.createElement('input');
+          input.type = 'checkbox';
+          input.value = uid;
+          input.checked = true;
+          input.name = widget_id + ':list';
+          label_element.appendChild(input);
+          label_element.appendChild(document.createTextNode(label));
+          li.appendChild(label_element);
+          list.appendChild(li);
      }
 }
 

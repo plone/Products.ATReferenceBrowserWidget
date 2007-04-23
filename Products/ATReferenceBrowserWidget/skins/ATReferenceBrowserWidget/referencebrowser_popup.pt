@@ -74,9 +74,9 @@
         </tal:if>
 
         <div style="text-align:right; position: absolute; top: 1.4em; right: 1.0em;">
-           <a href="javascript:history.back()" i18n:translate="referencebrowser_back">back</a>
+           <a href="javascript:history.back()" i18n:translate="referencebrowser_back">Back</a>
            |
-           <a href="javascript:window.close()" i18n:translate="referencebrowser_close">close window</a>
+           <a href="javascript:window.close()" i18n:translate="referencebrowser_close">Close window</a>
         </div>
         <div style="text-align:right;margin-bottom:1.5em; margin-top: 2.5em;">
            <div tal:condition="python: history_length > 0 "
@@ -105,9 +105,9 @@
            </div>
         </div>
     
-        <h2 tal:content="title" />
+        <h2 class="documentFirstHeading"
+            tal:content="title" />
         <p class="formHelp"
-             style="font-size:105%"
              tal:content="structure description"/>
 
         <!-- Search form -->
@@ -119,9 +119,6 @@
               tal:define="DateTime python:modules['DateTime'].DateTime;
                           indexes python:getattr(here, search_catalog, here.portal_catalog).indexes();"
               tal:attributes="action string:${here/absolute_url}/${template/getId}">
-            <fieldset>
-            <legend i18n:translate="referencebrowser_search_terms">Search</legend>
-
             <tal:base_query tal:condition="base_query/keys|nothing">
                 <tal:alter_request tal:define="dummy python: request.form.update(base_query);"/>
             </tal:base_query>
@@ -174,7 +171,6 @@
             <input type="hidden" name="fieldName" value="" tal:attributes="value fieldName" />
             <input type="hidden" name="fieldRealName" value="" tal:attributes="value fieldRealName" />
             <input type="hidden" name="at_url" value="" tal:attributes="value at_url" />
-            </fieldset>
         </form>
         <div id="message" class="portalMessage" style="display:none;margin-top:0px;">
            <span i18n:translate="referencebrowser_text_added_reference">Added reference to:</span>&nbsp;<span id="messageTitle"></span>
@@ -314,12 +310,12 @@
                                                 onclick=""
                                                 tal:attributes="href string: #;
                                                                 onclick string: window.opener.referencebrowser_setReference('${fieldName}', '${uid}', '${title}', ${multi});; if (0==${close_window}) {window.close()} else {showMessage('${title}')};; ;">
-                                                <strong i18n:translate="referencebrowser_insert_reference">insert</strong>
+                                                <strong i18n:translate="referencebrowser_insert_reference">Insert</strong>
                                             </a>
                                             |
                                             <a href="" target="_blank"
                                                 tal:attributes="href python:item.absolute_url();">
-                                                <strong i18n:translate="referencebrowser_view">view</strong>
+                                                <strong i18n:translate="referencebrowser_browse">Browse</strong>
                                             </a>
                                         </tal:referenceable>
                                     </td>
@@ -332,9 +328,9 @@
             </tal:list>
         </tal:block>
         <div style="text-align:right;margin-top:1em;margin-bottom:2em;">
-           <a href="javascript:history.back()" i18n:translate="referencebrowser_back">back</a>
+           <a href="javascript:history.back()" i18n:translate="referencebrowser_back">Back</a>
            |
-           <a href="javascript:window.close()" i18n:translate="referencebrowser_close">close window</a>
+           <a href="javascript:window.close()" i18n:translate="referencebrowser_close">Close window</a>
         </div>        
     </body>
 </html>
