@@ -1,8 +1,6 @@
-from zope.component import getUtility
-
 from StringIO import StringIO
 from Products.Archetypes.Extensions.utils import install_subskin
-from Products.CMFCore.interfaces import IPropertiesTool
+from Products.CMFCore.utils import getToolByName
 
 from Products.ATReferenceBrowserWidget.config import *
         
@@ -13,7 +11,7 @@ def install(self):
     # installTypes(self, out, listTypes(PROJECTNAME), PROJECTNAME)
     
     # install property for startup_directory
-    props = getUtility(IPropertiesTool).site_properties
+    props = getToolByName(self, "portal_properties").site_properties
     if not props.hasProperty('refwidget_startupdirectories'):
         props._setProperty('refwidget_startupdirectories', [], 'lines')
         out.write('Registered property refwidget_startupdirectories in site_properties - see readme.txt')

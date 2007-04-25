@@ -8,7 +8,7 @@
 ##title=
 ##
 
-from Products.CMFCore.utils import getToolByInterfaceName
+from Products.CMFCore.utils import getToolByName
 
 # Mapping works as follows:
 #
@@ -32,7 +32,7 @@ def filterPortalFactory (url):
     reference to portal_factory.
     """
 
-    portal_factory = getToolByInterfaceName('Products.CMFPlone.interfaces.IFactoryTool')
+    portal_factory = getToolByName (context, 'portal_factory')
 
     # Prepend / to ensure proper path separation, and ensure url is a string
     if url:
@@ -70,8 +70,8 @@ def filterPortalFactory (url):
 # path is relative to portal root
 def checkPath(path):
     if path.startswith('/'):
-        portal_url = getToolByInterfaceName('Products.CMFCore.interfaces.IURLTool')
-        return portal_url() + path
+        portal_url = getToolByName (context, 'portal_url')
+        return portal_url () + path
     else:
         return path
 
@@ -88,13 +88,13 @@ def checkPath(path):
 # to path2 if no startup_directory is set.
 if directory.strip() == '':
 
-    props = getToolByInterfaceName('Products.CMFCore.interfaces.IPropertiesTool').site_properties
+    props = getToolByName(context, 'portal_properties').site_properties
     if hasattr(props, 'refwidget_startupdirectories'):
         startups = props.refwidget_startupdirectories
         ownpath = '/'.join(context.getPhysicalPath())
 
         # remove portal path - / is always portal_root
-        purl = '/'.join(getToolByInterfaceName('Products.CMFCore.interfaces.ISiteRoot').getPhysicalPath())
+        purl = '/'.join(getToolByName(context, 'portal_url').getPortalObject().getPhysicalPath())
         ownpath = ownpath.replace(purl, '')
         
         for pathdef in startups:
