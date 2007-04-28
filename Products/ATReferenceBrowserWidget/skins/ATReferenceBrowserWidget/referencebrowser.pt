@@ -120,7 +120,6 @@
                              value=""
                              id=""
                              tal:attributes="value obj/title_or_id;
-                                             tabindex tabindex/next;
                                              size python:test(widget.size=='', 30, widget.size);
                                              id string:${fieldName}_label" readonly="readonly" />
 

@@ -154,12 +154,10 @@
                        id="searchGadget"
                        name="searchValue"
                        size="25"
-                       tabindex=""
                        value=""
                        tal:attributes="value search_text;"
                        />
-                <input tabindex=""
-                       class="searchButton"
+                <input class="searchButton"
                        type="submit"
                        name="submit"
                        value="Search"
