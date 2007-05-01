@@ -2,6 +2,24 @@ Changelog for ATReferenceBrowserWidget
 
     (name of developer listed in brackets)
 
+ATReferenceBrowserWidget 2.0b3 - Released May 1, 2007
+
+    - Death to tabindexes!
+      [limi]
+
+    - Use getToolByName to get the portal_properties tool
+      [wichert]
+
+    - ATReferenceBrowserWidget now uses checkboxes for displaying the selection
+      (instead of a selection field).
+      [jvloothuis]
+
+    - Removed unused and wrong types_param definition throwing errors in some
+      configurations. (There is no mandatory "allowed_types" attribute on field
+      definitions you can rely on.) If this line was good for anything, please
+      re-add it in a failsafe version.
+      [deichi]
+
 ATReferenceBrowserWidget 2.0b2 - Released March 23, 2007
 
     - Replaced all getToolByName calls with getUtility.
