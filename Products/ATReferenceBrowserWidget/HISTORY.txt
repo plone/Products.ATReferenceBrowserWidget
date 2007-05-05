@@ -2,6 +2,12 @@ Changelog for ATReferenceBrowserWidget
 
     (name of developer listed in brackets)
 
+ATReferenceBrowserWidget 2.0b4 - Released May 5, 2007
+
+    - Removed five:registerPackage as it is causing problems in ZEO
+      environments.
+      [hannosch]
+
 ATReferenceBrowserWidget 2.0b3 - Released May 1, 2007
 
     - Death to tabindexes!
