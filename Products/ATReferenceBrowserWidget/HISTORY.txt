@@ -2,6 +2,11 @@ Changelog for ATReferenceBrowserWidget
 
     (name of developer listed in brackets)
 
+ATReferenceBrowserWidget 2.0b5 - Unreleased
+
+    - Small i18n markup correction.
+      [hannosch]
+
 ATReferenceBrowserWidget 2.0b4 - Released May 5, 2007
 
     - Removed five:registerPackage as it is causing problems in ZEO
