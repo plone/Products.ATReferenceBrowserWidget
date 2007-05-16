@@ -4,6 +4,9 @@ Changelog for ATReferenceBrowserWidget
 
 ATReferenceBrowserWidget 2.0b5 - Unreleased
 
+    - Changed an invalid div tag inside a ul to a li tag in referencebrowser.pt.
+      [hannosch]
+
     - Small i18n markup correction.
       [hannosch]
 

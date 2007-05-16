@@ -50,13 +50,13 @@
         </tal:block>
 
         <ul tal:condition="field/multiValued">
-          <div tal:omit-tag=""
+          <li tal:omit-tag=""
                tal:content="nothing"
                tal:on-error="nothing"
                tal:define="foo python:refs.sort(lambda x,y: cmp(x.order, y.order))">
              if we are not using orderablereferencefield we don't have the order attribute
              we swallow this error silently using tal:on-error
-          </div>
+          </li>
           <li tal:repeat="ref refs">
              <tal:block tal:define="obj ref/getTargetObject;
                                     obj_path python: '/'.join(obj.getPhysicalPath());">
