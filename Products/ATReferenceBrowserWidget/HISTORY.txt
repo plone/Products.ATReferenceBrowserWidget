@@ -2,7 +2,7 @@ Changelog for ATReferenceBrowserWidget
 
     (name of developer listed in brackets)
 
-ATReferenceBrowserWidget 2.0b5 - Unreleased
+ATReferenceBrowserWidget 2.0rc1 - Released July 9, 2007
 
     - Changed an invalid div tag inside a ul to a li tag in referencebrowser.pt.
       [hannosch]
