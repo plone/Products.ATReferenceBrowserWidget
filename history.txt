@@ -1,11 +1,15 @@
-1.7.* Unreleased
-================
+1.7.2 Released September 10, 2007
+=================================
+
+ * Backported the reference_edit macro from trunk. This makes it reusable
+   by other widgets.
+   [deo]
 
  * Added .metadata files for the two javascripts to tie them to the
-   HTTPCACHE. 
+   HTTPCACHE.
    [reinout]
 
-1.7.1 Released January 16, 2006
+1.7.1 Released January 16, 2007
 ===============================
 
  * No longer show all search results by default when allow_browse is off
