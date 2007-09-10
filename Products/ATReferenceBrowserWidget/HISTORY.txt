@@ -2,6 +2,12 @@ Changelog for ATReferenceBrowserWidget
 
     (name of developer listed in brackets)
 
+ATReferenceBrowserWidget 2.0.1 - Released September 10, 2007
+
+    - Added a reference_edit macro to the referencebrowser.pt template and
+      call it from the edit macro. This makes it reusable by other widgets.
+      [deo]
+
 ATReferenceBrowserWidget 2.0 - Released August 9, 2007
 
     - No changes.

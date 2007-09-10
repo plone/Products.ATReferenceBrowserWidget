@@ -91,18 +91,15 @@
       </tal:define>
     </metal:view_macro>
 
-    <metal:edit_macro define-macro="edit">
-      <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
-
-        <div metal:fill-slot="widget_body"
-             tal:define="multiVal python:test(field.multiValued, 1, 0);
+    <metal:reference_edit define-macro="reference_edit"
+             tal:define="multiVal           python:test(field.multiValued, 1, 0);
                          show_path          field/widget/show_path|nothing;
                          image_portal_types widget/image_portal_types;
                          image_method       widget/image_method|string:;
-                         portal_path        python: '/'.join(context.portal_url.getPortalObject().getPhysicalPath());
-                         fieldName fieldName;
-                         fieldRealName field/getName;
-                         uids python:same_type(value, []) and value or [value];
+                         portal_path        python:'/'.join(context.portal_url.getPortalObject().getPhysicalPath());
+                         fieldName          fieldName;
+                         fieldRealName      field/getName;
+                         uids               python:same_type(value, []) and value or [value];
                          ">
 
           <input type="hidden"
@@ -183,9 +180,16 @@
           </div>
           <!-- Todo? -->
           <metal:addable metal:use-macro="here/widgets/addable_support/macros/addable"/>
-        </div>
+    </metal:reference_edit>
+
+    <metal:edit_macro define-macro="edit">
+      <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+        <metal:fill fill-slot="widget_body">
+          <metal:use use-macro="here/referencebrowser/macros/reference_edit" />
+        </metal:fill>
       </metal:use>
     </metal:edit_macro>
+
     <metal:search_macro define-macro="search">
       <div metal:use-macro="here/widgets/reference/macros/edit"></div>
     </metal:search_macro>
