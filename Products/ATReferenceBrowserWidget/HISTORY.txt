@@ -2,6 +2,12 @@ Changelog for ATReferenceBrowserWidget
 
     (name of developer listed in brackets)
 
+ATReferenceBrowserWidget 2.0.2 - Unreleased
+
+    - Inserted references were not checked by default on Internet Explorer 7.
+      This closes http://dev.plone.org/plone/ticket/7936.
+      [hannosch]
+
 ATReferenceBrowserWidget 2.0.1 - Released September 10, 2007
 
     - Added a reference_edit macro to the referencebrowser.pt template and

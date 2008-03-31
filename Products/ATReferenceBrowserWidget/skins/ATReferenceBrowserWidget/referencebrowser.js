@@ -35,6 +35,8 @@ function referencebrowser_setReference(widget_id, uid, label, multi)
           label_element.appendChild(document.createTextNode(label));
           li.appendChild(label_element);
           list.appendChild(li);
+          // fix on IE7 - check *after* adding to DOM
+          input.checked = true;
      }
 }
 
