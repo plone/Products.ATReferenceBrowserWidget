@@ -19,6 +19,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
         'allow_search':1,
         'allow_browse':1,
         'startup_directory':'',
+        'startup_directory_method':'',
         'base_query':'',
         'force_close_on_insert':0,
         'search_catalog':'portal_catalog',
@@ -81,6 +82,16 @@ class ReferenceBrowserWidget(ReferenceWidget):
             results['portal_type']=allowed_types
 
         return results
+
+    def getStartupDirectory(self, instance):
+        """ Return the path to the startup directory. """
+        if self.startup_directory_method:
+            if getattr(aq_base(instance), self.startup_directory_method, False):
+                method = getattr(instance, self.startup_directory_method)
+                if callable(method):
+                    return method()
+                return method
+        return self.startup_directory
 
 
 registerWidget(ReferenceBrowserWidget,

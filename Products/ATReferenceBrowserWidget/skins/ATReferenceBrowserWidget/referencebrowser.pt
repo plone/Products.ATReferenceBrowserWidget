@@ -168,7 +168,7 @@
               </div>
           </tal:multi>
           <div style="clear: both"
-               tal:define="startup_directory python:here.referencebrowser_startupDirectory (widget.startup_directory);
+               tal:define="startup_directory python:here.referencebrowser_startupDirectory(widget.getStartupDirectory(here));
                            global at_url at_url|python:'/'.join(here.getPhysicalPath())">
               <input type="button"
                      class="searchButton"
