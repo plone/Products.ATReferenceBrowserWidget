@@ -53,6 +53,10 @@ Properties
       path1 is the path where all widgets being under it set startup_directory
       to path2 if no startup_directory is set.
 
+    * startup_directory_method: the name of a method or variable that, if 
+      available at the instance, will be used to obtain the path of the 
+      startup directory. If present, 'startup_directory' will be ignored.
+
     * restrict_browsing_to_startup_directory: allows you to restrict the
       breadcrumbs ('allow_browse' property) to contents inside the 
       'startup_directory' only. So you are not able to walk up in the hierarchy.
