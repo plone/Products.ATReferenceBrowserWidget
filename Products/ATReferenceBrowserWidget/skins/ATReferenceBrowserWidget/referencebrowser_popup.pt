@@ -214,7 +214,7 @@
                 <tal:crums tal:repeat="crumb crumbs">            
 
                     <a tal:attributes="href string:${crumb/absolute_url}/${template/getId}?fieldName=${fieldName}&amp;fieldRealName=${fieldRealName}&amp;at_url=${at_url}">
-                        <span tal:content="string: ${crumb/Title}">
+                        <span tal:content="string:${crumb/Title}">
                             Breadcrumb Title
                         </span>
                     </a>
@@ -306,8 +306,8 @@
                                         <tal:referenceable tal:condition="referenceable">
                                             <a href=""
                                                 onclick=""
-                                                tal:attributes="href string: #;
-                                                                onclick string: window.opener.referencebrowser_setReference('${fieldName}', '${uid}', '${title}', ${multi});; if (0==${close_window}) {window.close()} else {showMessage('${title}')};; ;">
+                                                tal:attributes="href string:#;
+                                                                onclick string:window.opener.referencebrowser_setReference('${fieldName}', '${uid}', '${title}', ${multi});; if (0==${close_window}) {window.close()} else {showMessage('${title}')};; ;">
                                                 <strong i18n:translate="referencebrowser_insert_reference">Insert</strong>
                                             </a>
                                             |
