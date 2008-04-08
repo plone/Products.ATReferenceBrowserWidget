@@ -4,6 +4,14 @@ Changelog for ATReferenceBrowserWidget
 
 ATReferenceBrowserWidget 2.0.2 - Unreleased
 
+    - Re-enabling 'Remove reference' button so that in multiValue=False mode 
+      there's a way to actually unset a singly chosen reference. This was a 
+      feature regression introduced in Plone 3.0.x and until some other UI 
+      paradigm emerges, this should be there.  This isn't a problem in multiValue 
+      mode, as the checkbox UI allows the disabling of any individual referenced objects.  
+      This fixes #6950.
+      [andrewb]
+
     - Added new property 'startup_directory_method'. It defines a
       method that, if available at the instance, will be used to obtain the
       path of the startup directory.
