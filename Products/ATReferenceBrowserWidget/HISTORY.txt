@@ -21,6 +21,13 @@ ATReferenceBrowserWidget 2.0.2 - Unreleased
       This closes http://dev.plone.org/plone/ticket/7936.
       [hannosch]
 
+    - Added new property 'hide_inaccessible'. When set, it changes the widget
+      behaviour in view mode so that it hides all the items from the list of
+      references for which a user do not have the View permission
+      (instead of presenting the user with the login screen). In case of any
+      problems please contact me via tomasz@kotarba.net.
+      [triquetra]
+
 ATReferenceBrowserWidget 2.0.1 - Released September 10, 2007
 
     - Added a reference_edit macro to the referencebrowser.pt template and

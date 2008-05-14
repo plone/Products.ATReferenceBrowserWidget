@@ -32,6 +32,7 @@ class ReferenceBrowserWidget(ReferenceWidget):
         'history_length' : 0,
         'restrict_browsing_to_startup_directory' : 0,
         'show_results_without_query': 0,
+        'hide_inaccessible' : 0,
         })
 
     # default_search_index: when a user searches in the popup, this index is used by default
@@ -51,6 +52,9 @@ class ReferenceBrowserWidget(ReferenceWidget):
     # show_review_state: show the review state of objects
     # search_catalog: the id of an alternate search catalog to use for the query
     #   (i.e. member_catalog for CMFMember)
+    # hide_inaccessible: hides all the items from the list of references for
+    #   which users do not have the View permission (instead of showing them
+    #   the login screen)
     
     security = ClassSecurityInfo()    
 

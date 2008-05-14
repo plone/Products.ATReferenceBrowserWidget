@@ -13,13 +13,15 @@
                           image_portal_types field/widget/image_portal_types;
                           image_method       field/widget/image_method|string:;
                           show_path          field/widget/show_path|nothing;
-                          portal_path        python: '/'.join(context.portal_url.getPortalObject().getPhysicalPath());"
+                          portal_path        python: '/'.join(context.portal_url.getPortalObject().getPhysicalPath());
+                          hide_inaccessible  field/widget/hide_inaccessible | nothing;"
                   condition="refs">
 
-        <tal:block tal:condition="not:field/multiValued"
+        <tal:block tal:condition="python: not field.multiValued and (can_view or not hide_inaccessible)"
                tal:define="ref python:refs[0];
                            obj ref/getTargetObject;
-                           obj_path python: '/'.join(obj.getPhysicalPath())">
+                           obj_path python: '/'.join(obj.getPhysicalPath());
+                           can_view python: checkPermission('View', obj)">
             <tal:if condition="image_portal_types">
               <img src="#" alt="Image"
                    tal:condition="python: obj.portal_type in image_portal_types"
@@ -56,35 +58,38 @@
              If we are not using orderablereferencefield we don't have the order attribute
              we swallow this error silently using tal:on-error
           </tal:sort>
-          <li tal:repeat="ref refs">
-             <tal:block tal:define="obj ref/getTargetObject;
-                                    obj_path python: '/'.join(obj.getPhysicalPath());">
-                <tal:if condition="image_portal_types">
-                  <img tal:condition="python: obj.portal_type in image_portal_types"
-                       tal:attributes="src string:${obj/absolute_url}/$image_method" />
-                </tal:if>
-                <a href="#"
-                   tal:attributes="href obj/absolute_url;
-                                   class python:obj.portal_type.replace(' ', '_')"
-                   tal:content="python:obj.Title() or obj.absolute_url(relative=1)">
-                  Target Title
-                </a>
-
-                <a href="#"
-                   tal:condition="python:portal.portal_interface.objectImplements(ref,'Products.Archetypes.interfaces.referenceengine.IContentReference')"
-                   tal:attributes="href python:ref.getContentObject().absolute_url();
-                                   class python:obj.portal_type.replace(' ', '_')"
-                   tal:content="field/relationship">
-                  reference object link
-                </a>
-
-                <tal:if condition="show_path"
-                     i18n:translate="label_directory">
-                  (Directory: <span i18n:name="directory" tal:replace="python: obj_path.replace(portal_path + '/', '') ">directory</span>)
-                </tal:if>
-
-             </tal:block>
-          </li>
+          <tal:block tal:repeat="ref refs">
+            <tal:block tal:define="obj ref/getTargetObject;
+                                   obj_path python: '/'.join(obj.getPhysicalPath());
+                                   can_view python: checkPermission('View', obj)"
+                       tal:condition="python: can_view or not hide_inaccessible">
+              <li>
+                    <tal:if condition="image_portal_types">
+                      <img tal:condition="python: obj.portal_type in image_portal_types"
+                           tal:attributes="src string:${obj/absolute_url}/$image_method" />
+                    </tal:if>
+                    <a href="#"
+                       tal:attributes="href obj/absolute_url;
+                                       class python:obj.portal_type.replace(' ', '_')"
+                       tal:content="python:obj.Title() or obj.absolute_url(relative=1)">
+                      Target Title
+                    </a>
+    
+                    <a href="#"
+                       tal:condition="python:portal.portal_interface.objectImplements(ref,'Products.Archetypes.interfaces.referenceengine.IContentReference')"
+                       tal:attributes="href python:ref.getContentObject().absolute_url();
+                                       class python:obj.portal_type.replace(' ', '_')"
+                       tal:content="field/relationship">
+                      reference object link
+                    </a>
+    
+                    <tal:if condition="show_path"
+                         i18n:translate="label_directory">
+                      (Directory: <span i18n:name="directory" tal:replace="python: obj_path.replace(portal_path + '/', '') ">directory</span>)
+                    </tal:if>
+              </li>
+            </tal:block>
+          </tal:block>
         </ul>
 
       </tal:define>
