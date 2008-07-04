@@ -2,7 +2,10 @@ Changelog for ATReferenceBrowserWidget
 
     (name of developer listed in brackets)
 
-ATReferenceBrowserWidget 2.0.2 - Unreleased
+ATReferenceBrowserWidget 2.0.2 - Released July 4, 2008
+
+    - Added new property 'hide_inaccessible'.
+      [triquetra]
 
     - Re-enabling 'Remove reference' button so that in multiValue=False mode 
       there's a way to actually unset a singly chosen reference. This was a 
@@ -11,6 +14,9 @@ ATReferenceBrowserWidget 2.0.2 - Unreleased
       mode, as the checkbox UI allows the disabling of any individual referenced objects.  
       This fixes #6950.
       [andrewb]
+
+    - Remove bogus leading whitespace.
+      [wichert]
 
     - Added new property 'startup_directory_method'. It defines a
       method that, if available at the instance, will be used to obtain the
