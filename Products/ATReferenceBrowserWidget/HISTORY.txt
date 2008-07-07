@@ -7,9 +7,6 @@ ATReferenceBrowserWidget 2.0.3
 
 ATReferenceBrowserWidget 2.0.2 - Released July 4, 2008
 
-    - Added new property 'hide_inaccessible'.
-      [triquetra]
-
     - Re-enabling 'Remove reference' button so that in multiValue=False mode 
       there's a way to actually unset a singly chosen reference. This was a 
       feature regression introduced in Plone 3.0.x and until some other UI 
