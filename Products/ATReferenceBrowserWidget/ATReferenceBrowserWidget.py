@@ -1,10 +1,11 @@
-from Globals import InitializeClass
-
-from Products.Archetypes.Widget import ReferenceWidget
-from Products.Archetypes.Registry import registerWidget,registerPropertyType
-from AccessControl import ClassSecurityInfo
 from types import StringType
+
+from AccessControl import ClassSecurityInfo
+from Acquisition import aq_base
+
+from Products.Archetypes.Registry import registerWidget,registerPropertyType
 from Products.Archetypes.utils import shasattr
+from Products.Archetypes.Widget import ReferenceWidget
 
 
 class ReferenceBrowserWidget(ReferenceWidget):
