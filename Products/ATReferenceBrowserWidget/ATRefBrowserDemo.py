@@ -3,6 +3,7 @@
 from Products.Archetypes.atapi import *
 
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import *
+from Products.ATReferenceBrowserWidget.config import PROJECTNAME
 from DateTime import DateTime
 
 
@@ -62,4 +63,4 @@ class ATRefBrowserDemo(BaseContent):
         return {'start': {'query':[DateTime()-7,DateTime()+7], 'range':'minmax'}}
     
 
-registerType(ATRefBrowserDemo)
+registerType(ATRefBrowserDemo, PROJECTNAME)

@@ -4,6 +4,10 @@ Changelog for ATReferenceBrowserWidget
 
 ATReferenceBrowserWidget 2.0.3
 
+    - Fixed missing project name from registerType method. This closes
+      http://dev.plone.org/plone/ticket/8369.
+      [garbas, hannosch]
+
     - Fixed undefined name in startup_directory_method. This closes
       http://dev.plone.org/plone/ticket/8347.
       [hannosch]
