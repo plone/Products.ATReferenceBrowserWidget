@@ -137,7 +137,7 @@
               <input id=""
                      size="50"
                      type="text"
-                     value="No reference set. Click the browse button to select."
+                     value="No reference set. Click the add button to select."
                      readonly="readonly"
                      i18n:attributes="value label_no_reference_set;"
                      tal:condition="not:  value"
