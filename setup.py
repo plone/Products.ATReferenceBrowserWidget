@@ -6,8 +6,8 @@ version = '2.0.3'
 setup(name='Products.ATReferenceBrowserWidget',
       version=version,
       description="ATReferenceBrowserWidget is reference widget for Archetypes.",
-      long_description="""\
-      """,
+      long_description=open("README.txt").read() + "\n" +
+                       open(os.path.join("Products", "ATReferenceBrowserWidget", "HISTORY.txt")).read(),
       classifiers=[
         "Framework :: Plone",
         "Framework :: Zope2",
@@ -17,13 +17,12 @@ setup(name='Products.ATReferenceBrowserWidget',
       keywords='CMF Plone Archetypes reference widget',
       author='Danny Bloemendaal',
       author_email='plone-developers@lists.sourceforge.net',
-      url='http://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/ATReferenceBrowserWidget/trunk',
+      url='http://pypi.python.org/pypi/Products.ATReferenceBrowserWidget',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],
       include_package_data=True,
       zip_safe=False,
-      download_url='http://plone.org/products/atreferencebrowserwidget/releases',
       install_requires=[
         'setuptools',
       ],
