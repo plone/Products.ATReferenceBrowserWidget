@@ -74,7 +74,7 @@ for k, v in second_pass.items():
 
 if show_query:
     try:
-        results=catalog(query)
+        results=catalog(**query)
     except ParseError:
         pass
 

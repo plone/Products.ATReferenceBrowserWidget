@@ -4,6 +4,9 @@ Changelog
 2.0.4
 -----
 
+- Fixed catalog search call, it should get the query as keywords, not a dict.
+  This makes ATRBW work with collective.solr.
+  [fschulze]
 
 2.0.3 - August 18, 2008
 -----------------------
