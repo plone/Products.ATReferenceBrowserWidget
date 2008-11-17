@@ -165,7 +165,7 @@
                     <input type="checkbox" 
                            tal:attributes="name string:${fieldName}:list; 
                                            value python:set[1];" 
-                           checked="checked">
+                           checked="checked" />
                     <tal:block replace="python: show_path and '%s (%s)' % (title, obj_path.replace(portal_path, '')) or title" />
                   </label>
                 </li>
