@@ -1,8 +1,13 @@
 Changelog
 =========
 
-2.0.4
------
+2.0.4 - December 29, 2008
+-------------------------
+
+- The new property 'startup_directory_method' was used without guard. Since
+  old instances in a migrated db wouldn't have this property, this would
+  effectively block editing of nearly all ATContentTypes objects in an upgraded
+  db. Fixes reopened http://dev.plone.org/plone/ticket/8347. [smcmahon]
 
 - Fixed catalog search call, it should get the query as keywords, not a dict.
   This makes ATRBW work with collective.solr.

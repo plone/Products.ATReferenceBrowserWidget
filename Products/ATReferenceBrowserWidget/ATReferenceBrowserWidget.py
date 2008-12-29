@@ -88,11 +88,14 @@ class ReferenceBrowserWidget(ReferenceWidget):
 
         return results
 
+
     def getStartupDirectory(self, instance):
         """ Return the path to the startup directory. """
-        if self.startup_directory_method:
-            if getattr(aq_base(instance), self.startup_directory_method, False):
-                method = getattr(instance, self.startup_directory_method)
+        
+        startup_directory_method = getattr(aq_base(self), 'startup_directory_method', None)
+        if startup_directory_method:
+            if getattr(aq_base(instance), startup_directory_method, False):
+                method = getattr(instance, startup_directory_method)
                 if callable(method):
                     return method()
                 return method
