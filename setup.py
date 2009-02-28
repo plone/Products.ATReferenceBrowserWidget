@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '2.0.5'
+version = '3.0'
 
 setup(name='Products.ATReferenceBrowserWidget',
       version=version,
@@ -27,9 +27,9 @@ setup(name='Products.ATReferenceBrowserWidget',
         'setuptools',
         'Products.Archetypes',
         'Products.CMFCore',
-        # 'Acquisition',
-        # 'DateTime',
-        # 'ZODB3',
-        # 'Zope2',
+        'Acquisition',
+        'DateTime',
+        'ZODB3',
+        'Zope2',
       ],
 )
