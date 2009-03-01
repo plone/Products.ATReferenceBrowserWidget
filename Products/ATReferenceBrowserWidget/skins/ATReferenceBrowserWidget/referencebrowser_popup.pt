@@ -28,8 +28,7 @@
     </script>
 </head>
     <body class="popup atrefbrowser" onload="focus();self.name='referencebrowser_popup'" style="margin: 4px;padding:0.5em;" 
-          tal:define="border_color here/base_properties/globalBorderColor;
-                      at_url python:here.REQUEST.get('at_url');
+          tal:define="at_url python:here.REQUEST.get('at_url');
                       fieldName python:here.REQUEST.get('fieldName');
                       fieldRealName python:here.REQUEST.get('fieldRealName');
                       at_obj python:here.restrictedTraverse(at_url);
@@ -63,7 +62,7 @@
                       b_size python:20;
                       b_start python:0;
                       b_start request/b_start | b_start;
-                      Batch python:modules['Products.CMFPlone'].Batch;">
+                      Batch python:modules['plone.sequencebatch'].Batch;">
 
         <tal:if condition="python: history_length > 0">
             <tal:insert define="dummy python: context.referencebrowser_insertHistory(request['PATH_TRANSLATED'], history_length)"/>
@@ -127,8 +126,7 @@
                 <label i18n:translate="referencebrowser_search_index_label">Search index</label><br/>
                 <select name="search_index" 
                         style=""
-                        id="indexSelector"
-                        tal:attributes="style string:font-family:${here/base_properties/fontFamily};;font-size:100%;">
+                        id="indexSelector">
                     <tal:indexes tal:repeat="index indexes">
                         <tal:filter tal:condition="python:(available_indexes!={} and available_indexes.has_key(index)) or available_indexes=={}">
                             <option value=""
@@ -175,23 +173,14 @@
         </div>
         <!-- actual list of objects, either searchresults or folder contents -->
         <tal:block tal:define="query_results python:(always_show or search_text) and [brain.getObject() for brain in here.referencebrowser_queryCatalog(search_catalog=search_catalog)];">
-            <div style="border-top:1px solid black;border-bottom:1px solid black;"
-                     tal:attributes="style string:border-top:1px solid ${border_color};;
-                                           border-bottom:1px solid ${border_color};;
-                                           margin-bottom:1em;;padding:0.2em 0 0.1em 0;;
-                                           margin-top:1.5em;;"
-                     tal:condition="python:((search_text!='' or not allow_browse) and query_results!=[])">
+            <div tal:condition="python:((search_text!='' or not allow_browse) and query_results!=[])">
                 <span i18n:translate="referencebrowser_heading_search_results">Search results</span>
             </div>
             <!-- breadcrums -->
-               <div style="border-top:1px solid black;border-bottom:1px solid black;"
-                     tal:attributes="style string:border-top:1px solid ${border_color};;
-                                           border-bottom:1px solid ${border_color};;
-                                           margin-bottom:1em;;padding:0.2em 0 0.1em 0;;margin-top:1.5em;"
-                     tal:condition= "python:search_text=='' and allow_browse"
+               <div  tal:condition= "python:search_text=='' and allow_browse"
                      tal:define=    "portal here/portal_url/getPortalObject;
                                      putils nocall:portal/plone_utils;
-                                     crumbs python:putils.createBreadCrumbs(here);
+                                     crumbs python:context.restrictedTraverse('@@breadcrumbs_view').breadcrumbs();
                                      crumbs python: test(True, context.referencebrowser_filterBreadCrumbs(crumbs, widget.startup_directory), crumbs); 
                                      isRTL python:portal.restrictedTraverse('@@plone_portal_state').is_rtl();
                                      parents request/PARENTS;
@@ -251,8 +240,7 @@
                                                   item_referenceable python:((allowed_types and (item.portal_type in allowed_types)) or not allowed_types);
                                                   review_state_allows python: test(filter_review_states, getInfoFor(item, 'review_state', None) in (only_for_review_states or ()), True);
                                                   has_uid python:hasattr(item.aq_explicit, 'UID');
-                                                  referenceable python:has_uid and item_referenceable and review_state_allows and item!=at_obj;
-                                                  color here/base_properties/discreetColor;">
+                                                  referenceable python:has_uid and item_referenceable and review_state_allows and item!=at_obj;">
 
                                 <tr tal:define="oddrow repeat/item/odd" 
                                     tal:attributes="class python:test(oddrow, 'even', 'odd')">
@@ -277,8 +265,7 @@
                                             </strong>
                                             <span style="" 
                                                   tal:condition="python:not referenceable" 
-                                                  tal:content="item/title_or_id"
-                                                  tal:attributes="style string:color:${color}" />
+                                                  tal:content="item/title_or_id" />
                                         </tal:foldercheck>
 
                                         <div tal:condition="show_review_state">
@@ -295,7 +282,6 @@
                                         style=""
                                         i18n:domain="plone"
                                         i18n:translate=""
-                                        tal:attributes="style python:test(referenceable, '', 'color:' + color)"
                                         tal:content="python:item.getTypeInfo().Title()">
                                         Title
                                     </td>

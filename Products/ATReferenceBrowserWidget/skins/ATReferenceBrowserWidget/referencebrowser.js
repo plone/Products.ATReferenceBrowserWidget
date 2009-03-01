@@ -16,12 +16,13 @@ function referencebrowser_setReference(widget_id, uid, label, multi)
         label_element.value=label
      }  else {
          // check if the item isn't already in the list
-         var current_values = cssQuery('#' + widget_id + ' input');
-         for (var i=0; i < current_values.length; i++) {
-            if (current_values[i].value == uid) {
-              return false;
-            }
-          }         
+         // XXX This relies on cssQuery!!!
+         // var current_values = cssQuery('#' + widget_id + ' input');
+         // for (var i=0; i < current_values.length; i++) {
+         //    if (current_values[i].value == uid) {
+         //      return false;
+         //    }
+         //  }         
           // now add the new item
           list=document.getElementById(widget_id);
           li = document.createElement('li');

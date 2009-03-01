@@ -4,6 +4,9 @@ Changelog
 3.0 - unreleased
 ----------------
 
+- Made the reference browser work with and require Plone 4.
+  [hannosch]
+
 - Declare package dependencies.
   [hannosch]
 

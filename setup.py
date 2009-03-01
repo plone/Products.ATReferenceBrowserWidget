@@ -25,6 +25,7 @@ setup(name='Products.ATReferenceBrowserWidget',
       zip_safe=False,
       install_requires=[
         'setuptools',
+        'plone.sequencebatch',
         'Products.Archetypes',
         'Products.CMFCore',
         'Acquisition',
