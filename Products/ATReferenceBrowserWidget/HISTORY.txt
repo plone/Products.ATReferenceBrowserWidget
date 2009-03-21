@@ -4,6 +4,9 @@ Changelog
 3.0 - unreleased
 ----------------
 
+- Avoid acquiring `portal_properties` and call it via a proper API.
+  [hannosch]
+
 - Made the reference browser work with and require Plone 4.
   [hannosch]
 
