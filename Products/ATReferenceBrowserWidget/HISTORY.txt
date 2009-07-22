@@ -6,6 +6,9 @@ Changelog
 
 - Declare package dependencies.
   [hannosch]
+- Let breadcrumbs respect navigation root
+  This fixes http://dev.plone.org/plone/ticket/9373.
+  [tom_gross]
 
 2.0.4 - December 29, 2008
 -------------------------
