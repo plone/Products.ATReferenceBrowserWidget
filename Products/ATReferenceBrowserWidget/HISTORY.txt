@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.0.5 - unreleased
-------------------
+2.0.5 - October 5,2009
+----------------------
 
 - Declare package dependencies.
   [hannosch]
