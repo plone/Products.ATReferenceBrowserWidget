@@ -1,4 +1,3 @@
-
 import zope.deprecation
 zope.deprecation.moved('archetypes.referencebrowserwidget.widget', 'Plone 5.0')
 

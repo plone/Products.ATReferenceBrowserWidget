@@ -4,8 +4,9 @@ Changelog
 3.0 - unreleased
 ----------------
 
-- superseeded the other changes by obsoleting the product in favour of
-  archetypes.referencebrowserwidget. http://dev.plone.org/plone/ticket/9258 [tom_gross]
+- Superseded the other changes by obsoleting the package in favor of
+  archetypes.referencebrowserwidget. http://dev.plone.org/plone/ticket/9258
+  [tom_gross]
 
 - Avoid acquiring `portal_properties` and call it via a proper API.
   [hannosch]
@@ -15,8 +16,9 @@ Changelog
 
 - Declare package dependencies.
   [hannosch]
-- Let breadcrumbs respect navigation root
-  This fixes http://dev.plone.org/plone/ticket/9373.
+
+- Let breadcrumbs respect navigation root. This fixes
+  http://dev.plone.org/plone/ticket/9373.
   [tom_gross]
 
 2.0.4 - December 29, 2008

@@ -1,6 +1,4 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:cmf="http://namespaces.zope.org/cmf">
+<configure xmlns="http://namespaces.zope.org/zope">
 
   <include package="archetypes.referencebrowserwidget" />
 
