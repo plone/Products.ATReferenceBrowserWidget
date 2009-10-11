@@ -1,7 +1,7 @@
+import os
 from setuptools import setup, find_packages
-import sys, os
 
-version = '3.0'
+version = '3.0a1'
 
 setup(name='Products.ATReferenceBrowserWidget',
       version=version,
@@ -10,7 +10,6 @@ setup(name='Products.ATReferenceBrowserWidget',
                        open(os.path.join("Products", "ATReferenceBrowserWidget", "HISTORY.txt")).read(),
       classifiers=[
         "Framework :: Plone",
-        "Framework :: Zope2",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Programming Language :: Python",
       ],
@@ -26,5 +25,6 @@ setup(name='Products.ATReferenceBrowserWidget',
       install_requires=[
         'setuptools',
         'archetypes.referencebrowserwidget',
+        'zope.deprecation',
       ],
 )

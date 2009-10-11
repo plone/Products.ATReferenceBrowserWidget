@@ -1,8 +1,8 @@
 Changelog
 =========
 
-3.0 - unreleased
-----------------
+3.0a1 - 2009-10-11
+------------------
 
 - Superseded the other changes by obsoleting the package in favor of
   archetypes.referencebrowserwidget. http://dev.plone.org/plone/ticket/9258
