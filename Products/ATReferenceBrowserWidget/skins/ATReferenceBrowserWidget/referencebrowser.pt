@@ -51,7 +51,7 @@
 
         </tal:block>
 
-        <ul tal:condition="field/multiValued">
+        <ul tal:condition="python: field.multiValued and refs">
           <tal:sort tal:content="nothing"
                     tal:on-error="nothing"
                     tal:define="foo python:refs.sort(lambda x,y: cmp(x.order, y.order))">
@@ -157,7 +157,7 @@
               <p class="discreet"
                  tal:condition="not: targets">No items currently selected</p>
 -->
-              <ul class="visualNoMarker"
+              <ul class="visualNoMarker" tal:condition="targets">
                   tal:attributes="id string:${fieldName};">
                 <li tal:repeat="set targets">
                   <label tal:define="title    python: set[0].title_or_id();
