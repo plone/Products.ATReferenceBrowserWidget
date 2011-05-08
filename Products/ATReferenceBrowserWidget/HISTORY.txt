@@ -1,13 +1,14 @@
 Changelog
 =========
 
-2.0.6 - unreleased
-------------------
+2.0.6 - May 8, 2011
+-------------------
 
--
+- Make widget valid XHTML
+  [massimo]
 
 2.0.5 - October 5, 2009
-----------------------
+-----------------------
 
 - Declare package dependencies.
   [hannosch]
