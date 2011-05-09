@@ -24,6 +24,12 @@ function referencebrowser_setReference(widget_id, uid, label, multi)
           }         
           // now add the new item
           list=document.getElementById(widget_id);
+          if (list === null) {
+	            container = jq('#atref_' + widget_id + '_marker');
+	            container.after(
+	               '<ul class="visualNoMarker" id="' + widget_id + '"></ul>');
+	            list = document.getElementById(widget_id);
+          }
           li = document.createElement('li');
           label_element = document.createElement('label');
           input = document.createElement('input');

@@ -152,12 +152,12 @@
           </tal:single>
           <tal:multi tal:condition="multiVal"
                      tal:define="targets python:[(here.reference_catalog.lookupObject(u),u) for u in uids if u]">
-            <div style="float: left">
+            <div style="float: left"  tal:attributes="id string:atref_${fieldName}_marker">
 <!-- This should be enabled if we can remove it when an item is inserted.
               <p class="discreet"
                  tal:condition="not: targets">No items currently selected</p>
 -->
-              <ul class="visualNoMarker" tal:condition="targets">
+              <ul class="visualNoMarker" tal:condition="targets"
                   tal:attributes="id string:${fieldName};">
                 <li tal:repeat="set targets">
                   <label tal:define="title    python: set[0].title_or_id();
