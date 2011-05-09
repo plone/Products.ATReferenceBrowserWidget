@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '2.0.7dev'
+version = '2.0.7'
 
 setup(name='Products.ATReferenceBrowserWidget',
       version=version,
