@@ -1,8 +1,13 @@
 Changelog
 =========
 
-2.0.7 - May 9, 2011
+2.0.8 - svn/unreleased
 ----------------------
+
+- 
+
+2.0.7 - May 9, 2011
+-------------------
 
 - Fix JavaScript selection bug introduced with 2.0.6
   [tom_gross]
