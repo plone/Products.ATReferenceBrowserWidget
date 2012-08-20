@@ -21,7 +21,8 @@
                tal:define="ref python:refs[0];
                            obj ref/getTargetObject;
                            obj_path python: '/'.join(obj.getPhysicalPath());
-                           can_view python: checkPermission('View', obj)">
+                           can_view python: checkPermission('View', obj);
+                           link_class python: can_view and obj.portal_type.replace(' ', '_') or ''">
             <tal:if condition="image_portal_types">
               <img src="#" alt="Image"
                    tal:condition="python: obj.portal_type in image_portal_types"
@@ -31,15 +32,14 @@
 
             <a href="#"
                tal:attributes="href obj/absolute_url;
-                               class python:obj.portal_type.replace(' ', '_')"
-               tal:content="python:obj.Title() or obj.absolute_url(relative=1)">
+                               class link_class"
+               tal:content="python:can_view and obj.Title() or obj.absolute_url(relative=1)">
               Sole target object's title
             </a>
-
             <a href="#"
                tal:condition="python:portal.portal_interface.objectImplements(ref,'Products.Archetypes.interfaces.referenceengine.IContentReference')"
                tal:attributes="href python:ref.getContentObject().absolute_url();
-                               class python:obj.portal_type.replace(' ', '_')"
+                               class link_class"
                tal:content="field/relationship">
               reference object link
             </a>
@@ -61,23 +61,24 @@
           <tal:block tal:repeat="ref refs">
             <tal:block tal:define="obj ref/getTargetObject;
                                    obj_path python: '/'.join(obj.getPhysicalPath());
-                                   can_view python: checkPermission('View', obj)"
+                                   can_view python: checkPermission('View', obj);
+                                   link_class python: can_view and obj.portal_type.replace(' ', '_') or ''"
                        tal:condition="python: can_view or not hide_inaccessible">
               <li>
                     <tal:if condition="image_portal_types">
-                      <img tal:condition="python: obj.portal_type in image_portal_types"
+                      <img tal:condition="python: can_view and obj.portal_type in image_portal_types"
                            tal:attributes="src string:${obj/absolute_url}/$image_method" />
                     </tal:if>
                     <a href="#"
                        tal:attributes="href obj/absolute_url;
-                                       class python:obj.portal_type.replace(' ', '_')"
-                       tal:content="python:obj.Title() or obj.absolute_url(relative=1)">
+                                       class link_class"
+                       tal:content="python:can_view and obj.Title() or obj.absolute_url(relative=1)">
                       Target Title
                     </a>
     
                     <a href="#"
                        tal:condition="python:portal.portal_interface.objectImplements(ref,'Products.Archetypes.interfaces.referenceengine.IContentReference')"
-                       tal:attributes="href python:ref.getContentObject().absolute_url();
+                       tal:attributes="href link_class;
                                        class python:obj.portal_type.replace(' ', '_')"
                        tal:content="field/relationship">
                       reference object link
