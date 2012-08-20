@@ -4,7 +4,9 @@ Changelog
 2.0.8 - svn/unreleased
 ----------------------
 
-- 
+- Handle cases of relations the user has no access to.
+  The default behavior is to show these links. But this behavior was broken.
+  [do3cc]
 
 2.0.7 - May 9, 2011
 -------------------
