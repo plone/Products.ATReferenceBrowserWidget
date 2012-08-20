@@ -78,8 +78,8 @@
     
                     <a href="#"
                        tal:condition="python:portal.portal_interface.objectImplements(ref,'Products.Archetypes.interfaces.referenceengine.IContentReference')"
-                       tal:attributes="href link_class;
-                                       class python:obj.portal_type.replace(' ', '_')"
+                       tal:attributes="href python:ref.getContentObject().absolute_url();
+                                       class link_class"
                        tal:content="field/relationship">
                       reference object link
                     </a>
