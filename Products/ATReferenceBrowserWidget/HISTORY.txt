@@ -1,8 +1,15 @@
 Changelog
 =========
 
-2.0.8 - svn/unreleased
-----------------------
+2.0.9 - unreleased
+------------------
+
+- Don't throw 'unauthorized' when editing objects with relations to
+  inaccessible content
+  [pbauer]
+
+2.0.8 - Aug 22, 2012
+--------------------
 
 - Handle cases of relations the user has no access to.
   The default behavior is to show these links. But this behavior was broken.
@@ -161,7 +168,7 @@ Changelog
   [alecm]
 
 - Added .metadata files for the two javascripts to tie them to the
-  HTTPCACHE. 
+  HTTPCACHE.
   [reinout]
 
 
